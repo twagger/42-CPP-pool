@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/11 12:11:05 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/11 13:33:01 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Zombie
 		Zombie(std::string name);
 		~Zombie(void);
 
-		void	announce(void);
+		void	announce(void) const;
 };
 
 void	randomChump(std::string name);

@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/11 12:54:21 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/11 13:36:11 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Weapon
 		Weapon(std::string _type);
 		~Weapon(void);
 
-		std::string	const	&getType(void);
+		std::string	const	&getType(void) const;
 		void				setType(std::string type);
 };
 

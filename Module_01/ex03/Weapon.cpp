@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/11 12:59:40 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/11 13:45:00 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,9 @@ Weapon::~Weapon(void)
 ** Member functions & accessors
 */
 
-std::string	const	&Weapon::getType(void)
+std::string	const	&Weapon::getType(void) const
 {
-	std::string	const	&type_ref = this->_type;
-	
-	return (type_ref);
+	return (this->_type);
 }
 
 void	Weapon::setType(std::string type)

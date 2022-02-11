@@ -6,35 +6,47 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 13:00:47 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/11 13:18:47 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/11 15:07:10 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
-#include <iostream>
 
 /*
 ** Constructor and destructor
 */
 
-HumanA::HumanA(std::string name, Weapon weapon) : _name(name), _weapon(weapon)
+HumanB::HumanB(std::string name) : _name(name)
 {
-	std::cout << ">> + HumanA constructor called" << std::endl;
+	this->_weapon = NULL;
+	std::cout << ">> + HumanB constructor called" << std::endl;
 }
 
-HumanA::~HumanA()
+HumanB::~HumanB(void)
 {
-	std::cout << ">> - HumanA destructor called" << std::endl;
+	std::cout << ">> - HumanB destructor called" << std::endl;
 }
 
 /*
 ** Member functions and accessors
 */
 
-void	HumanA::attack(void)
+void	HumanB::attack(void) const
 {
-	std::cout << this->_name
-			  << " attacks with their "
-			  << this->_weapon.getType()
-			  << std::endl;
+	if (this->_weapon)
+	{
+		std::cout << this->_name
+				  << " attacks with their "
+				  << this->_weapon->getType()
+				  << std::endl;
+	}
+	else
+		std::cout << this->_name
+				  << " attacks with his hands"
+				  << std::endl;
+}
+
+void	HumanB::setWeapon(Weapon &weapon)
+{
+	this->_weapon = &weapon;
 }
