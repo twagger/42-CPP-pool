@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 11:42:17 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/12 11:21:41 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/12 11:41:27 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ void	PhoneBook::addContact(void)
 			&& !buff_ds.empty())
 			break ;
 		else
-			std::cout << "Error : all fields are mandatory" << std::endl;
+			std::cout << "\033[1;31mError : all fields are mandatory\033[0m" << std::endl;
 	}
 	this->addOneContact(buff_fn, buff_ln, buff_nn, buff_pn, buff_ds);
-	std::cout << ">>> Contact added ! <<<" << std::endl;
+	std::cout << "\033[1;36m>>> Contact added ! <<<\033[0m" << std::endl;
 }
 
 void	PhoneBook::addOneContact(std::string fn, std::string ln, \
@@ -93,16 +93,28 @@ void	PhoneBook::searchByIndex(void) const
 {
 	std::string	buff;
 	int			index;
+	int			nb_errors;
 
+	nb_errors = 0;
 	while (1)
 	{
 		std::cout << "Index of the contact to display :";
 		std::getline(std::cin, buff);
-		index = std::stoi(buff);
+		try	{
+			index = std::stoi(buff);
+		}
+		catch (std::invalid_argument) {
+			index = -1;
+		}
 		if (index >= 0 && index < Contact::getNbContact())
 			break ;
 		else
+		{
+			++nb_errors;
 			std::cout << "ERROR : Wrong index." << std::endl;
+			if (nb_errors >= 3)
+				return ;
+		}
 	}
 	this->printOneContact(index);
 }

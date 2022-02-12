@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 11:29:00 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/12 11:21:07 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/12 11:27:26 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(void)
 			break ;
 		}
 		else
-			std::cout << "Please enter a VALID command" << std::endl;
+			std::cout << "\033[1;31mPlease enter a VALID command\033[0m" << std::endl;
 	}
 	return (0);
 }
