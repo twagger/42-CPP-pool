@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/12 10:45:15 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/12 11:08:57 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Karen
 	private:
 		void	debug(void) const;
 		void	info(void) const;
-		void	waning(void) const;
+		void	warning(void) const;
 		void	error(void) const;
 
 	public:
