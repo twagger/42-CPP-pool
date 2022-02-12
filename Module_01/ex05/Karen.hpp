@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/11 16:45:51 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/12 10:45:15 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,18 @@
 class Karen
 {
 	private:
-		void	debug(void);
-		void	info(void);
-		void	waning(void);
-		void	error(void);
+		void	debug(void) const;
+		void	info(void) const;
+		void	waning(void) const;
+		void	error(void) const;
 
 	public:
 		Karen(void);
 		~Karen(void);
 
-		void	complain(std::string level);
+		void	complain(std::string level) const;
 };
+
+typedef void	(Karen::*Comments)(void) const;
 
 #endif
