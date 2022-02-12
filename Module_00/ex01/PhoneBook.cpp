@@ -6,11 +6,12 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 11:42:17 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/12 11:41:27 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/12 12:14:00 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <iomanip>
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
@@ -134,17 +135,13 @@ void	PhoneBook::printOneContact(int i) const
 
 static	std::string	getResized(std::string str)
 {
-	if (str.length() <= 10)
-	{
-		str.resize(10, ' ');
-		return (str);
-	}
-	else
+	if (str.length() > 10)
 	{
 		str.resize(9);
 		str.append(".", 1);
 		return (str);
 	}
+	return (str);
 }
 
 void	PhoneBook::printAllContacts(void) const
@@ -153,20 +150,26 @@ void	PhoneBook::printAllContacts(void) const
 	int	nb_contact;
 
 	nb_contact = Contact::getNbContact();
-	std::cout << "|----------|----------|----------|----------|" << std::endl;
-	std::cout << "|INDEX     |";
-	std::cout << "FIRSTNAME |";
-	std::cout << "LASTNAME  |";
-	std::cout << "NICKNAME  |" << std::endl;
-	std::cout << "|----------|----------|----------|----------|" << std::endl;
+	std::cout << "|----------|----------|----------|----------|"
+			  << std::endl
+			  << "|   INDEX  |" << "FIRSTNAME |" << " LASTNAME |" << " NICKNAME |"
+			  << std::endl
+			  << "|----------|----------|----------|----------|"
+			  << std::endl;
 	i = -1;
 	while (++i < nb_contact)
 	{
-		std::cout << "|" << i << "         |";
-		std::cout << getResized(this->_contact_arr[i].getFirstName()) << "|";
-		std::cout << getResized(this->_contact_arr[i].getLastName()) << "|";
-		std::cout << getResized(this->_contact_arr[i].getNickName()) << "|" \
-			<< std::endl;
+		std::cout << std::right << std::setfill(' ')
+				  << "|" 
+				  << std::setw(10) << i 
+				  << "|"
+				  << std::setw(10) << getResized(this->_contact_arr[i].getFirstName())
+				  << "|"
+				  << std::setw(10) << getResized(this->_contact_arr[i].getLastName())
+				  << "|"
+				  << std::setw(10) << getResized(this->_contact_arr[i].getNickName())
+				  << "|"
+				  << std::endl;
 	}
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
 }
