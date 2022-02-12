@@ -6,8 +6,8 @@ CC			= c++
 # SOURCES
 ################################################################################
 SRCS		= main.cpp \
-			  Contact.class.cpp \
-			  PhoneBook.class.cpp
+			  Contact.cpp \
+			  PhoneBook.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 # EXECUTABLES & LIBRARIES
