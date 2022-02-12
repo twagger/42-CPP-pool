@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:44:55 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/11 09:29:57 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/12 12:27:43 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Account::Account(int initial_deposit) : \
 Account::~Account(void)
 {
 	Account::_displayTimestamp();
-	std::cout << "index:" << Account::_nbAccounts \
+	std::cout << "index:" << this->_accountIndex \
 			  << ";amount:" << this->_amount \
 			  << ";closed" << std::endl;
 	Account::_nbAccounts -= 1;
@@ -109,7 +109,7 @@ void	Account::makeDeposit(int deposit)
 			  << ";p_amount:" << this->_amount \
 			  << ";deposit:" << deposit \
 			  << ";amount:" << this->_amount + deposit \
-			  << ";nb_deposit:" << this->_nbDeposits \
+			  << ";nb_deposits:" << this->_nbDeposits \
 			  << std::endl;
 	this->_amount += deposit;
 	Account::_totalAmount += deposit;
@@ -122,12 +122,12 @@ bool	Account::makeWithdrawal(int withdrawal)
 			  << ";p_amount:" << this->_amount;
 	if (this->_amount >= withdrawal)
 	{
+		this->_nbWithdrawals += 1;
 		std::cout << ";withdrawal:" << withdrawal \
 				  << ";amount:" << this->_amount - withdrawal \
-				  << ";nb_withdrawal:" << this->_nbWithdrawals \
+				  << ";nb_withdrawals:" << this->_nbWithdrawals \
 			      << std::endl;
 		this->_amount -= withdrawal;
-		this->_nbWithdrawals += 1;
 		Account::_totalNbWithdrawals += 1;
 		Account::_totalAmount -= withdrawal;
 		return (true);
