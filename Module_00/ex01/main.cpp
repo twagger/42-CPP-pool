@@ -6,14 +6,14 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 11:29:00 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/08 13:25:37 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/12 11:21:07 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string.h>
-#include "PhoneBook.class.hpp"
-#include "Contact.class.hpp"
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
 int	main(void)
 {
