@@ -19,19 +19,23 @@ HEADERS		= .
 
 # FLAGS
 ################################################################################
-CFLAGS		:= -Wall -Wextra -Werror -std=c++98
+CPPFLAGS		:= -Wall -Wextra -Werror -std=c++98
 
 ifeq ($(DEBUG), true)
-	CFLAGS	+= -fsanitize=address -g3 -O0
+	CPPFLAGS	+= -fsanitize=address -g3 -O0
+endif
+
+ifeq ($(SILENT), true)
+	CPPFLAGS	+= -DSILENCE
 endif
 
 # RULES
 ################################################################################
 .c.o:
-			$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o) -I$(HEADERS)
+			$(CC) $(CPPFLAGS) -c $< -o $(<:.cpp=.o) -I$(HEADERS)
 
 $(NAME):	$(OBJS)
-			$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I$(HEADERS)
+			$(CC) $(CPPFLAGS) $(OBJS) -o $(NAME) -I$(HEADERS)
 
 all:		$(NAME)
 

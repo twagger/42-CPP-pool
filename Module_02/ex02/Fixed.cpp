@@ -6,12 +6,17 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/15 15:23:01 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/15 16:31:16 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cmath>
 #include "Fixed.hpp"
+#ifdef SILENCE
+# define SILENT 1
+#else
+# define SILENT 0
+#endif
 
 int	const Fixed::_nbBits = 8;
 
@@ -21,31 +26,36 @@ int	const Fixed::_nbBits = 8;
 
 Fixed::Fixed(void)
 {
-	std::cout << ">> + Default constructor called" << std::endl;
+	if (!SILENT)
+		std::cout << ">> + Default constructor called" << std::endl;
 	this->_value = 0;
 }
 
 Fixed::Fixed(int value)
 {
-	std::cout << ">> + Int constructor called" << std::endl;
+	if (!SILENT)
+		std::cout << ">> + Int constructor called" << std::endl;
 	this->_value = value * 256;
 }
 
 Fixed::Fixed(float value)
 {
-	std::cout << ">> + Float constructor called" << std::endl;
+	if (!SILENT)
+		std::cout << ">> + Float constructor called" << std::endl;
 	this->_value = roundf(value * 256);
 }
 
 Fixed::Fixed(Fixed const &src)
 {
-	std::cout << ">> + Copy constructor called" << std::endl;
+	if (!SILENT)
+		std::cout << ">> + Copy constructor called" << std::endl;
 	*this = src;
 }
 
 Fixed::~Fixed(void)
 {
-	std::cout << ">> - Fixed destructor called" << std::endl;
+	if (!SILENT)
+		std::cout << ">> - Fixed destructor called" << std::endl;
 }
 
 /*
@@ -107,7 +117,8 @@ Fixed	Fixed::max(Fixed const &f1, Fixed const &f2)
 // Assignment operator
 Fixed	&Fixed::operator=(Fixed const &rhs)
 {
-	std::cout << ">> < Assignment operator called" << std::endl;
+	if (!SILENT)
+		std::cout << ">> < Assignment operator called" << std::endl;
 	this->_value = rhs.getRawBits();
 	return (*this);
 }
@@ -168,12 +179,22 @@ Fixed	Fixed::operator-(Fixed const &rhs) const
 
 Fixed	Fixed::operator*(Fixed const &rhs) const
 {
-	return (Fixed((int)((int64_t)this->_value * (int64_t)rhs.getRawBits()) / 256));
+	Fixed	tmpResult;
+	int		res;
+	
+	res = ((int64_t)this->_value * (int64_t)rhs.getRawBits()) / (1 << 8);
+	tmpResult.setRawBits(res);
+	return (tmpResult);
 }
 
 Fixed	Fixed::operator/(Fixed const &rhs) const
 {
-	return (Fixed((int)((int64_t)this->_value * 256) / rhs.getRawBits()));
+	Fixed	tmpResult;
+	int		res;
+	
+	res = ((int64_t)this->_value * (1 << 8)) / rhs.getRawBits();
+	tmpResult.setRawBits(res);
+	return (tmpResult);
 }	
 
 // Increment / Decrement operators
