@@ -6,10 +6,11 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/15 10:07:11 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/15 12:05:45 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <cmath>
 #include "Fixed.hpp"
 
 int	const Fixed::_nbBits = 8;
@@ -20,13 +21,25 @@ int	const Fixed::_nbBits = 8;
 
 Fixed::Fixed(void)
 {
-	std::cout << ">> + Fixed default constructor called" << std::endl;
+	std::cout << ">> + Default constructor called" << std::endl;
 	this->_value = 0;
+}
+
+Fixed::Fixed(int value)
+{
+	std::cout << ">> + Int constructor called" << std::endl;
+	this->_value = value * 256;
+}
+
+Fixed::Fixed(float value)
+{
+	std::cout << ">> + Float constructor called" << std::endl;
+	this->_value = roundf(value * 256);
 }
 
 Fixed::Fixed(Fixed const &src)
 {
-	std::cout << ">> + Fixed copy constructor called" << std::endl;
+	std::cout << ">> + Copy constructor called" << std::endl;
 	*this = src;
 }
 
@@ -41,14 +54,22 @@ Fixed::~Fixed(void)
 
 int	Fixed::getRawBits(void) const
 {
-	std::cout << ">> < getRawBits member function called" << std::endl;
 	return (this->_value);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	std::cout << ">> < setRawBits member function called" << std::endl;
 	this->_value = raw; 
+}
+
+float	Fixed::toFloat(void) const
+{
+	return ((float)this->getRawBits()/256);
+}
+
+int	Fixed::toInt(void) const
+{
+	return (int(this->getRawBits()/256));
 }
 
 Fixed	&Fixed::operator=(Fixed const &rhs)
@@ -56,4 +77,10 @@ Fixed	&Fixed::operator=(Fixed const &rhs)
 	std::cout << ">> < Assignment operator called" << std::endl;
 	this->_value = rhs.getRawBits();
 	return (*this);
+}
+
+std::ostream	&operator<<(std::ostream &o, Fixed const &i)
+{
+	o << i.toFloat();
+	return (o);
 }
