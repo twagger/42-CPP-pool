@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/12 11:14:33 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/15 09:24:21 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	Karen::warning(void) const
 void	Karen::error(void) const
 {
 	std::cout << "\033[1;31m[ERROR]\033[0m "
-			  << "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month."
+			  << "This is unacceptable ! I want to speak to the manager now."
 			  << std::endl;	
 }
 
@@ -63,7 +63,7 @@ void	Karen::complain(std::string level) const
 	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	
 	i = -1;
-	while (++i < 5)
+	while (++i < 4)
 	{
 		if (levels[i].compare(level) == 0)
 			break;
