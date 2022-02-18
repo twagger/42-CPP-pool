@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/15 16:31:16 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/18 15:45:40 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,28 @@ int	const Fixed::_nbBits = 8;
 Fixed::Fixed(void)
 {
 	if (!SILENT)
-		std::cout << ">> + Default constructor called" << std::endl;
+		std::cout << ">> + Fixed default constructor called" << std::endl;
 	this->_value = 0;
 }
 
 Fixed::Fixed(int value)
 {
 	if (!SILENT)
-		std::cout << ">> + Int constructor called" << std::endl;
+		std::cout << ">> + Fixed int constructor called" << std::endl;
 	this->_value = value * 256;
 }
 
 Fixed::Fixed(float value)
 {
 	if (!SILENT)
-		std::cout << ">> + Float constructor called" << std::endl;
+		std::cout << ">> + Fixed float constructor called" << std::endl;
 	this->_value = roundf(value * 256);
 }
 
 Fixed::Fixed(Fixed const &src)
 {
 	if (!SILENT)
-		std::cout << ">> + Copy constructor called" << std::endl;
+		std::cout << ">> + Fixed copy constructor called" << std::endl;
 	*this = src;
 }
 
@@ -118,7 +118,7 @@ Fixed	Fixed::max(Fixed const &f1, Fixed const &f2)
 Fixed	&Fixed::operator=(Fixed const &rhs)
 {
 	if (!SILENT)
-		std::cout << ">> < Assignment operator called" << std::endl;
+		std::cout << ">> < Fixed assignment operator called" << std::endl;
 	this->_value = rhs.getRawBits();
 	return (*this);
 }
