@@ -6,12 +6,15 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 10:09:21 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/18 13:42:16 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/18 16:39:19 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Fixed.hpp"
+#ifndef POINT_HPP
+# define POINT_HPP
+
+# include <iostream>
+# include "Fixed.hpp"
 
 class Point
 {
@@ -32,3 +35,5 @@ class Point
 };
 
 bool	bsp(Point const a, Point const b, Point const c, Point const point);
+
+#endif
