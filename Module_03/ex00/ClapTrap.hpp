@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/18 16:47:22 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/18 17:25:30 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,29 @@ class ClapTrap
 	public:
 		// Constructors and destructor
 		ClapTrap(void);
-		ClapTrap(int value);
-		ClapTrap(float value);
+		ClapTrap(std::string name);
 		ClapTrap(ClapTrap const &src);
 		~ClapTrap(void);
 
 		// operator overload
 		ClapTrap	&operator=(ClapTrap const &rhs);
 
+		// accessors
+		std::string	getName(void) const;
+		int			getHitPoint(void) const;
+		int			getEnergyPoint(void) const;
+		int			getAttackDamage(void) const;
+
 		// member functions
-		int				toInt(void)	const;
+		void	attack(const std::string &target);
+		void	takeDamage(unsigned int amount);
+		void	beRepaired(unsigned int amount);
 
 	private:
-		int					_value;
-		static int const	_nbBits;
+		std::string	_name;
+		int			_hitPoints;
+		int			_energyPoints;
+		int			_attackDamage;
 };
 
 std::ostream	&operator<<(std::ostream &o, ClapTrap const &i);
