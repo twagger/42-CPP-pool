@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/15 12:05:45 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/18 09:59:55 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ float	Fixed::toFloat(void) const
 
 int	Fixed::toInt(void) const
 {
-	return (int(this->getRawBits()/256));
+	return ((int)(this->getRawBits()/256));
 }
 
 Fixed	&Fixed::operator=(Fixed const &rhs)
