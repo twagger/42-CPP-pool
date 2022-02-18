@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 11:02:15 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/18 16:05:39 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/18 16:17:58 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ static float	sign (Point point, Point p1, Point p2)
 	return ((p2.getX().toFloat() - p1.getX().toFloat()) * (point.getY().toFloat() - p1.getY().toFloat()) \
 		 - (p2.getY().toFloat() - p1.getY().toFloat()) * (point.getX().toFloat() - p1.getX().toFloat()));
 }
+
+/*
+** The BSP function will check for each "side" of the triangle if it is on the left,
+** right or on the side with the "sign" function (returning >0, <0 or 0)
+** If the point is on the same "side" for each part of the triangle, it is inside.
+*/
 
 bool	bsp(Point const a, Point const b, Point const c, Point const point)
 {
