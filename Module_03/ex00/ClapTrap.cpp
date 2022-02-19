@@ -6,11 +6,10 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 12:27:06 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/19 15:15:46 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cmath>
 #include "ClapTrap.hpp"
 #ifdef SILENCE
 # define SILENT 1
