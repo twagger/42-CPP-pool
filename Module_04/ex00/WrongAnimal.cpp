@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 15:33:28 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/19 15:51:42 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ WrongAnimal::~WrongAnimal(void)
 
 void	WrongAnimal::makeSound(void) const
 {
-	std::cout << "Sound" << std::endl;
+	std::cout << "Blip Blip" << std::endl;
 }
 
 std::string	WrongAnimal::getType(void) const

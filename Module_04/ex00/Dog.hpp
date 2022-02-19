@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:17:16 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 15:22:42 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/19 15:49:58 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ class Dog : public Animal
 		Dog(std::string name);
 		Dog(Dog const &src);
 		~Dog(void);
+
+		// member functions
+		void	makeSound(void) const;
+
 };
 
 #endif

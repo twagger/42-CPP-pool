@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 15:20:50 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/19 15:47:21 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ Animal::~Animal(void)
 
 void	Animal::makeSound(void) const
 {
-	std::cout << "Sound" << std::endl;
+	std::cout << "Greuuuuaaaaarrrrh !" << std::endl;
 }
 
 std::string	Animal::getType(void) const

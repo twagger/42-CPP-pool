@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:17:24 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 15:26:02 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/19 15:48:55 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,3 +42,8 @@ Dog::~Dog(void)
 /*
 ** Member functions & accessors
 */
+
+void	Dog::makeSound(void) const
+{
+	std::cout << "Ouaf !" << std::endl;
+}

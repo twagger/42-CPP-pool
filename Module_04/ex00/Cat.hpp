@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:22:59 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 15:23:38 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/19 15:49:42 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ class Cat : public Animal
 		Cat(std::string name);
 		Cat(Cat const &src);
 		~Cat(void);
+
+		// member functions	
+		void	makeSound(void) const;
 };
 
 #endif

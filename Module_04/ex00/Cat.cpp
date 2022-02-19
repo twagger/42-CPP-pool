@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:26:16 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 15:27:24 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/19 15:48:26 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,7 @@ Cat::~Cat(void)
 ** Member functions & accessors
 */
 
+void	Cat::makeSound(void) const
+{
+	std::cout << "Miaouuuuu !" << std::endl;
+}

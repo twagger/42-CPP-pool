@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:26:16 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 15:36:25 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/19 15:51:27 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,3 +42,8 @@ WrongCat::~WrongCat(void)
 /*
 ** Member functions & accessors
 */
+
+void	WrongAnimal::makeSound(void) const
+{
+	std::cout << "Meuuuh... ... Miaouu ?" << std::endl;
+}
