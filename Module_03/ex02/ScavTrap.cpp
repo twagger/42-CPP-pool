@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:17:24 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 12:34:25 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/19 14:43:04 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 ** Constructor and destructor
 */
 
-ScavTrap::ScavTrap(void)
+ScavTrap::ScavTrap(void) : ClapTrap()
 {
 	if (!SILENT)
 		std::cout << ">> +🐕 ScavTrap default constructor called" << std::endl;
@@ -31,7 +31,7 @@ ScavTrap::ScavTrap(void)
 	this->_attackDamage = 20;
 }
 
-ScavTrap::ScavTrap(std::string name) 
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	if (!SILENT)
 		std::cout << ">> +🐕 ScavTrap param constructor called" << std::endl;

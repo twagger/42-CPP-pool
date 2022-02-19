@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:17:24 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 14:41:54 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/19 14:44:46 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ ScavTrap::ScavTrap(void) : ClapTrap()
 	this->_attackDamage = 20;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+ScavTrap::ScavTrap(std::string name)  : ClapTrap(name)
 {
 	if (!SILENT)
 		std::cout << ">> +🐕 ScavTrap param constructor called" << std::endl;
