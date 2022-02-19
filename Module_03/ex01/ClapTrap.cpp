@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 12:27:06 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/19 12:26:45 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ClapTrap::attack(const std::string &target)
 {
 	if (this->_energyPoints > 0 && this->_hitPoints > 0)
 	{
-		std::cout << "[🗡️ ] ClapTrap " << *this << " attacks " << target
+		std::cout << "[⚔️ ] ClapTrap " << this->_name << " attacks " << target
 				  << ", causing "
 				  << this->_attackDamage << " points of damage !" << std::endl;
 		this->_energyPoints -= 1;
@@ -59,7 +59,7 @@ void	ClapTrap::attack(const std::string &target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	std::cout << "[🛡️ ] ClapTrap " << *this << " is attacked ! " 
+	std::cout << "[🛡️ ] ClapTrap " << this->_name << " is attacked ! " 
 			  << "He takes " << amount << " points of damage !" << std::endl;
 	if (amount > this->_hitPoints)
 		this->_hitPoints = 0;
@@ -71,7 +71,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_energyPoints > 0 && this->_hitPoints > 0)
 	{
-		std::cout << "[🔧] ClapTrap " << *this << " repares himself ! " 
+		std::cout << "[🔧] ClapTrap " << this->_name << " repares himself ! " 
 			  	  << "He restores " << amount << " hit points !" << std::endl;
 		this->_energyPoints -= 1;
 		this->_hitPoints += amount;
