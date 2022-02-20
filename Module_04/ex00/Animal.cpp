@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 15:47:21 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/20 08:28:42 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 ** Constructor and destructor
 */
 
-Animal::Animal(void) : _type("Zoidberg")
+Animal::Animal(void) : _type("Animal")
 {
 	if (!SILENT)
 		std::cout << ">> +🐾 Animal default constructor called" << std::endl;

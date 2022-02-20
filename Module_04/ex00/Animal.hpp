@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 15:19:55 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/20 08:27:12 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Animal
 		Animal(void);
 		Animal(std::string type);
 		Animal(Animal const &src);
-		~Animal(void);
+		virtual ~Animal(void);
 
 		// operator overload
 		Animal	&operator=(Animal const &rhs);
@@ -30,7 +30,7 @@ class Animal
 		std::string	getType(void) const;
 
 		// member functions
-		void	makeSound(void) const;
+		virtual void	makeSound(void) const;
 
 	protected:
 		std::string	_type;
