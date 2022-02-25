@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 12:48:24 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/25 16:58:23 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoint
 {
 	if (!SILENT)
 		std::cout << ">> +🐰 ClapTrap param constructor called" << std::endl;	
+}
+
+ClapTrap::ClapTrap(ClapTrap const &src)
+{
+	std::cout << ">> +🐰 ClapTrap copy constructor called" << std::endl;
+	*this = src;
 }
 
 ClapTrap::~ClapTrap(void)

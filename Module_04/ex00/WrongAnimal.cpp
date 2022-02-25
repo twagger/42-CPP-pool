@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/25 10:36:55 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/25 17:04:02 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ WrongAnimal::WrongAnimal(std::string type) : _type(type)
 {
 	if (!SILENT)
 		std::cout << ">> +👾 WrongAnimal param constructor called" << std::endl;	
+}
+
+WrongAnimal::WrongAnimal(WrongAnimal const &src)
+{
+	std::cout << ">> +👾 WrongAnimal copy constructor called" << std::endl;
+	*this = src;
 }
 
 WrongAnimal::~WrongAnimal(void)

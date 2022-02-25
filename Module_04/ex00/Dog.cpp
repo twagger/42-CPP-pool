@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:17:24 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 15:48:55 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/25 17:02:58 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ Dog::Dog(std::string type) : Animal(type)
 {
 	if (!SILENT)
 		std::cout << ">> +🐕 Dog param constructor called" << std::endl;
+}
+
+Dog::Dog(Dog const &src)
+{
+	std::cout << ">> +🐕 Dog copy constructor called" << std::endl;
+	*this = src;
 }
 
 Dog::~Dog(void)
