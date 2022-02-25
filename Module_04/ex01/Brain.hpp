@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/25 10:40:26 by twagner          ###   ########.fr       */
+/*   Created: 2022/02/25 11:02:00 by twagner           #+#    #+#             */
+/*   Updated: 2022/02/25 11:10:11 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 # include <iostream>
 
-class Animal
+class Brain
 {
 	public:
 		// Constructors and destructor
-		Animal(void);
-		Animal(std::string type);
-		Animal(Animal const &src);
-		virtual	~Animal(void);
+		Brain(void);
+		Brain(Brain const &src);
+		virtual	~Brain(void);
 
 		// operator overload
-		Animal	&operator=(Animal const &rhs);
+		Brain	&operator=(Brain const &rhs);
 
-		// accessors
-		std::string	getType(void) const;
-
-		// member functions
-		virtual void	makeSound(void) const;
-
-	protected:
-		std::string	_type;
+	private:
+		std::string	ideas[100];
 };
-
-std::ostream	&operator<<(std::ostream &o, Animal const &i);
 
 #endif

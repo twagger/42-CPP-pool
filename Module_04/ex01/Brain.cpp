@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/25 10:36:39 by twagner          ###   ########.fr       */
+/*   Created: 2022/02/25 11:01:23 by twagner           #+#    #+#             */
+/*   Updated: 2022/02/25 11:17:03 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Brain.hpp"
 #ifdef SILENCE
 # define SILENT 1
 #else
@@ -21,32 +21,27 @@
 ** Constructor and destructor
 */
 
-Animal::Animal(void) : _type("Animal")
+Brain::Brain(void)
 {
 	if (!SILENT)
-		std::cout << ">> +🐾 Animal default constructor called" << std::endl;
+		std::cout << ">> +🧠 Brain default constructor called" << std::endl;
 }
 
-Animal::Animal(std::string type) : _type(type)
+Brain::Brain(Brain const &src)
 {
-	if (!SILENT)
-		std::cout << ">> +🐾 Animal param constructor called" << std::endl;	
+	std::cout << ">> +🧠 Brain copy constructor called" << std::endl;
+	*this = src;
 }
 
-Animal::~Animal(void)
+Brain::~Brain(void)
 {
 	if (!SILENT)
-		std::cout << ">> -🐾 Animal destructor called" << std::endl;
+		std::cout << ">> +🧠 Brain destructor called" << std::endl;
 }
 
 /*
 ** Member functions & accessors
 */
-
-void	Animal::makeSound(void) const
-{
-	std::cout << "Greuuuuaaaaarrrrh !" << std::endl;
-}
 
 std::string	Animal::getType(void) const
 {
@@ -58,17 +53,9 @@ std::string	Animal::getType(void) const
 */
 
 // Assignment operator
-Animal	&Animal::operator=(Animal const &rhs)
+Brain	&Brain::operator=(Brain const &rhs)
 {
 	if (!SILENT)
-		std::cout << ">> =🐾 Animal assignment operator called" << std::endl;
-	this->_type = rhs.getType();
+		std::cout << ">> =🧠 Brain assignment operator called" << std::endl;
 	return (*this);
-}
-
-// Insertion operator
-std::ostream	&operator<<(std::ostream &o, Animal const &i)
-{
-	o << i.getType();
-	return (o);
 }

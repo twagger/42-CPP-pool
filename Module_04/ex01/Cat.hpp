@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/25 10:40:26 by twagner          ###   ########.fr       */
+/*   Created: 2022/02/19 15:22:59 by twagner           #+#    #+#             */
+/*   Updated: 2022/02/19 15:49:42 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 # include <iostream>
+# include "Animal.hpp"
 
-class Animal
+class Cat : public Animal
 {
 	public:
 		// Constructors and destructor
-		Animal(void);
-		Animal(std::string type);
-		Animal(Animal const &src);
-		virtual	~Animal(void);
+		Cat(void);
+		Cat(std::string name);
+		Cat(Cat const &src);
+		~Cat(void);
 
-		// operator overload
-		Animal	&operator=(Animal const &rhs);
-
-		// accessors
-		std::string	getType(void) const;
-
-		// member functions
-		virtual void	makeSound(void) const;
-
-	protected:
-		std::string	_type;
+		// member functions	
+		void	makeSound(void) const;
 };
-
-std::ostream	&operator<<(std::ostream &o, Animal const &i);
 
 #endif
