@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 17:20:11 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/25 17:04:02 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 #ifdef SILENCE
 # define SILENT 1
 #else
@@ -21,40 +21,40 @@
 ** Constructor and destructor
 */
 
-Animal::Animal(void) : _type("Animal")
+WrongAnimal::WrongAnimal(void) : _type("WrongAnimal")
 {
 	if (!SILENT)
-		std::cout << ">> +🐾 Animal default constructor called" << std::endl;
+		std::cout << ">> +👾 WrongAnimal default constructor called" << std::endl;
 }
 
-Animal::Animal(std::string type) : _type(type)
+WrongAnimal::WrongAnimal(std::string type) : _type(type)
 {
 	if (!SILENT)
-		std::cout << ">> +🐾 Animal param constructor called" << std::endl;	
+		std::cout << ">> +👾 WrongAnimal param constructor called" << std::endl;	
 }
 
-Animal::Animal(Animal const &src)
+WrongAnimal::WrongAnimal(WrongAnimal const &src)
 {
-	std::cout << ">> +🐾 Animal copy constructor called" << std::endl;
+	std::cout << ">> +👾 WrongAnimal copy constructor called" << std::endl;
 	*this = src;
 }
 
-Animal::~Animal(void)
+WrongAnimal::~WrongAnimal(void)
 {
 	if (!SILENT)
-		std::cout << ">> -🐾 Animal destructor called" << std::endl;
+		std::cout << ">> -👾 WrongAnimal destructor called" << std::endl;
 }
 
 /*
 ** Member functions & accessors
 */
 
-void	Animal::makeSound(void) const
+void	WrongAnimal::makeSound(void) const
 {
-	std::cout << "Greuuuuaaaaarrrrh !" << std::endl;
+	std::cout << "Blip Blip" << std::endl;
 }
 
-std::string	Animal::getType(void) const
+std::string	WrongAnimal::getType(void) const
 {
 	return (this->_type);
 }
@@ -64,16 +64,16 @@ std::string	Animal::getType(void) const
 */
 
 // Assignment operator
-Animal	&Animal::operator=(Animal const &rhs)
+WrongAnimal	&WrongAnimal::operator=(WrongAnimal const &rhs)
 {
 	if (!SILENT)
-		std::cout << ">> =🐾 Animal assignment operator called" << std::endl;
+		std::cout << ">> =🐾 WrongAnimal assignment operator called" << std::endl;
 	this->_type = rhs.getType();
 	return (*this);
 }
 
 // Insertion operator
-std::ostream	&operator<<(std::ostream &o, Animal const &i)
+std::ostream	&operator<<(std::ostream &o, WrongAnimal const &i)
 {
 	o << i.getType();
 	return (o);

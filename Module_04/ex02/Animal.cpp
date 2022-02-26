@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 17:20:11 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/26 17:36:58 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,42 +21,37 @@
 ** Constructor and destructor
 */
 
-Animal::Animal(void) : _type("Animal")
+AAnimal::AAnimal(void) : _type("Animal")
 {
 	if (!SILENT)
-		std::cout << ">> +🐾 Animal default constructor called" << std::endl;
+		std::cout << ">> +🐾 AAnimal default constructor called" << std::endl;
 }
 
-Animal::Animal(std::string type) : _type(type)
+AAnimal::AAnimal(std::string type) : _type(type)
 {
 	if (!SILENT)
-		std::cout << ">> +🐾 Animal param constructor called" << std::endl;	
+		std::cout << ">> +🐾 AAnimal param constructor called" << std::endl;	
 }
 
-Animal::Animal(Animal const &src)
+AAnimal::AAnimal(AAnimal const &src)
 {
-	std::cout << ">> +🐾 Animal copy constructor called" << std::endl;
+	std::cout << ">> +🐾 AAnimal copy constructor called" << std::endl;
 	*this = src;
 }
 
-Animal::~Animal(void)
+AAnimal::~AAnimal(void)
 {
 	if (!SILENT)
-		std::cout << ">> -🐾 Animal destructor called" << std::endl;
+		std::cout << ">> -🐾 AAnimal destructor called" << std::endl;
 }
 
 /*
 ** Member functions & accessors
 */
 
-void	Animal::makeSound(void) const
+void	AAnimal::makeSound(void) const
 {
 	std::cout << "Greuuuuaaaaarrrrh !" << std::endl;
-}
-
-std::string	Animal::getType(void) const
-{
-	return (this->_type);
 }
 
 /*
@@ -64,17 +59,10 @@ std::string	Animal::getType(void) const
 */
 
 // Assignment operator
-Animal	&Animal::operator=(Animal const &rhs)
+AAnimal	&AAnimal::operator=(AAnimal const &rhs)
 {
 	if (!SILENT)
 		std::cout << ">> =🐾 Animal assignment operator called" << std::endl;
-	this->_type = rhs.getType();
+	(void)rhs;
 	return (*this);
-}
-
-// Insertion operator
-std::ostream	&operator<<(std::ostream &o, Animal const &i)
-{
-	o << i.getType();
-	return (o);
 }
