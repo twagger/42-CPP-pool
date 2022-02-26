@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 12:38:09 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/25 16:57:54 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/26 11:45:54 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	this->_attackDamage = 30;
 }
 
-FragTrap::FragTrap(FragTrap const &src)
+FragTrap::FragTrap(FragTrap const &src) : ClapTrap()
 {
 	std::cout << ">> +🐸 FragTrap copy constructor called" << std::endl;
 	*this = src;
