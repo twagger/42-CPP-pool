@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/15 16:31:16 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/26 09:26:07 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ Fixed::Fixed(int value)
 {
 	if (!SILENT)
 		std::cout << ">> + Int constructor called" << std::endl;
-	this->_value = value * 256;
+	this->_value = value * (1 << Fixed::_nbBits);
 }
 
 Fixed::Fixed(float value)
 {
 	if (!SILENT)
 		std::cout << ">> + Float constructor called" << std::endl;
-	this->_value = roundf(value * 256);
+	this->_value = roundf(value * (1 << Fixed::_nbBits));
 }
 
 Fixed::Fixed(Fixed const &src)
@@ -74,12 +74,12 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat(void) const
 {
-	return ((float)this->getRawBits()/256);
+	return ((float)this->getRawBits() / (1 << Fixed::_nbBits));
 }
 
 int	Fixed::toInt(void) const
 {
-	return (int(this->getRawBits()/256));
+	return (int(this->getRawBits() / (1 << Fixed::_nbBits)));
 }
 
 Fixed	&Fixed::min(Fixed &f1, Fixed &f2)
@@ -182,7 +182,7 @@ Fixed	Fixed::operator*(Fixed const &rhs) const
 	Fixed	tmpResult;
 	int		res;
 	
-	res = ((int64_t)this->_value * (int64_t)rhs.getRawBits()) / (1 << 8);
+	res = ((int64_t)this->_value * (int64_t)rhs.getRawBits()) / (1 << Fixed::_nbBits);
 	tmpResult.setRawBits(res);
 	return (tmpResult);
 }
@@ -192,7 +192,7 @@ Fixed	Fixed::operator/(Fixed const &rhs) const
 	Fixed	tmpResult;
 	int		res;
 	
-	res = ((int64_t)this->_value * (1 << 8)) / rhs.getRawBits();
+	res = ((int64_t)this->_value * (1 << Fixed::_nbBits)) / rhs.getRawBits();
 	tmpResult.setRawBits(res);
 	return (tmpResult);
 }	
