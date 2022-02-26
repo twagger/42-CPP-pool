@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:26:16 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/25 17:02:21 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/26 12:19:26 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Cat::Cat(std::string type) : Animal(type)
 		std::cout << ">> +🐈 Cat param constructor called" << std::endl;
 }
 
-Cat::Cat(Cat const &src)
+Cat::Cat(Cat const &src) : Animal()
 {
 	std::cout << ">> +🐈 Cat copy constructor called" << std::endl;
 	*this = src;
