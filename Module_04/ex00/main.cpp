@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:12:03 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/25 10:46:52 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/26 12:29:32 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,19 @@ int main(void)
 	std::cout << "--------------------------------------------" << std::endl;
 	std::cout << "| Animals should output cat and dog sounds |" << std::endl;
 	std::cout << "--------------------------------------------" << std::endl;
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << meta->getType() << " " << std::endl;
+	std::cout << j->getType() << " : ";
 	i->makeSound();
+	std::cout << i->getType() << " : ";
 	j->makeSound();
+	std::cout << meta->getType() << " : ";
 	meta->makeSound();
 
 	std::cout << "---------------------------------------------" << std::endl;
 	std::cout << "| Animals should output Wrong animals sounds |" << std::endl;
 	std::cout << "---------------------------------------------" << std::endl;
-	std::cout << k->getType() << " " << std::endl;
-	std::cout << l->getType() << " " << std::endl;
+	std::cout << k->getType() << " : ";
 	k->makeSound();
+	std::cout << l->getType() << " : ";
 	l->makeSound();
 
 	delete meta;

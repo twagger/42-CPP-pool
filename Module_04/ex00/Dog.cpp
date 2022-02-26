@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:17:24 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 12:18:45 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/26 17:06:23 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,16 @@
 ** Constructor and destructor
 */
 
-Dog::Dog(void) : Animal()
+Dog::Dog(void) : Animal("Dog")
 {
 	if (!SILENT)
 		std::cout << ">> +🐕 Dog default constructor called" << std::endl;
 }
 
-Dog::Dog(std::string type) : Animal(type)
-{
-	if (!SILENT)
-		std::cout << ">> +🐕 Dog param constructor called" << std::endl;
-}
-
-Dog::Dog(Dog const &src) : Animal()
+Dog::Dog(Dog const &src) : Animal("Dog")
 {
 	std::cout << ">> +🐕 Dog copy constructor called" << std::endl;
-	*this = src;
+	(void)src;
 }
 
 Dog::~Dog(void)

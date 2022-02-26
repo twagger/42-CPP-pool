@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:22:59 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 15:49:42 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/26 16:50:51 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ class Cat : public Animal
 	public:
 		// Constructors and destructor
 		Cat(void);
-		Cat(std::string name);
 		Cat(Cat const &src);
 		~Cat(void);
 

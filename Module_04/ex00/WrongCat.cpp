@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:26:16 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 12:19:05 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/26 17:06:32 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,16 @@
 ** Constructor and destructor
 */
 
-WrongCat::WrongCat(void) : WrongAnimal()
+WrongCat::WrongCat(void) : WrongAnimal("WrongCat")
 {
 	if (!SILENT)
 		std::cout << ">> +🐄 WrongCat default constructor called" << std::endl;
 }
 
-WrongCat::WrongCat(std::string type) : WrongAnimal(type)
-{
-	if (!SILENT)
-		std::cout << ">> +🐄 WrongCat param constructor called" << std::endl;
-}
-
-WrongCat::WrongCat(WrongCat const &src) : WrongAnimal()
+WrongCat::WrongCat(WrongCat const &src) : WrongAnimal("WrongCat")
 {
 	std::cout << ">> +🐄 WrongCat copy constructor called" << std::endl;
-	*this = src;
+	(void)src;
 }
 
 WrongCat::~WrongCat(void)

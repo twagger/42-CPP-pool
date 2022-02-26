@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:26:16 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 12:19:26 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/26 17:03:41 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,25 @@
 ** Constructor and destructor
 */
 
-Cat::Cat(void) : Animal()
+Cat::Cat(void) : Animal("Cat")
 {
 	if (!SILENT)
 		std::cout << ">> +🐈 Cat default constructor called" << std::endl;
+	this->_brain = new Brain();
 }
 
-Cat::Cat(std::string type) : Animal(type)
-{
-	if (!SILENT)
-		std::cout << ">> +🐈 Cat param constructor called" << std::endl;
-}
-
-Cat::Cat(Cat const &src) : Animal()
+Cat::Cat(Cat const &src) : Animal("Cat")
 {
 	std::cout << ">> +🐈 Cat copy constructor called" << std::endl;
-	*this = src;
+	this->_brain = new Brain();
+	*this->_brain = *(src.getBrain());
 }
 
 Cat::~Cat(void)
 {
 	if (!SILENT)
 		std::cout << ">> -🐈 Cat destructor called" << std::endl;
+	delete this->_brain;
 }
 
 /*
@@ -52,4 +49,24 @@ Cat::~Cat(void)
 void	Cat::makeSound(void) const
 {
 	std::cout << "Miaouuuuu !" << std::endl;
+}
+
+int	Cat::addIdea(const std::string idea)
+{
+	return (this->_brain->addIdea(idea));
+}
+
+int	Cat::removeIdea(int num)
+{
+	return (this->_brain->removeIdea(num));
+}
+
+void	Cat::displayIdeas(void) const
+{
+	this->_brain->displayIdeas();
+}
+
+Brain	*Cat::getBrain(void) const
+{
+	return (this->_brain);
 }

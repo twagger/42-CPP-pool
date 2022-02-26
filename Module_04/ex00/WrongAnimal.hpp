@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 15:31:00 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/26 12:36:31 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class WrongAnimal
 		WrongAnimal(void);
 		WrongAnimal(std::string type);
 		WrongAnimal(WrongAnimal const &src);
-		~WrongAnimal(void);
+		virtual ~WrongAnimal(void);
 
 		// operator overload
 		WrongAnimal	&operator=(WrongAnimal const &rhs);

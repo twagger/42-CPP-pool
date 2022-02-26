@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:22:59 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 15:50:46 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/26 16:50:55 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ class WrongCat : public WrongAnimal
 	public:
 		// Constructors and destructor
 		WrongCat(void);
-		WrongCat(std::string name);
 		WrongCat(WrongCat const &src);
 		~WrongCat(void);
 
