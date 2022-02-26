@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 14:02:51 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 11:46:57 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/26 12:03:52 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ DiamondTrap::DiamondTrap(std::string name) : ScavTrap(name), FragTrap(name)
 	this->_attackDamage = FragTrap::_attackDamage;
 }
 
-DiamondTrap::DiamondTrap(DiamondTrap const &src) : ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap(DiamondTrap const &src) : ClapTrap(), ScavTrap(), FragTrap()
 {
 	std::cout << ">> +🧟 DiamondTrap copy constructor called" << std::endl;
 	*this = src;
@@ -59,4 +59,16 @@ DiamondTrap::~DiamondTrap(void)
 void	DiamondTrap::whoAmI(void) const
 {
 	std::cout << "🧟 I am both " << this->_name << " and " << this->ClapTrap::_name << std::endl;
+}
+
+std::string	DiamondTrap::getName(void) const
+{
+	return (this->_name);
+}
+
+// Insertion operator
+std::ostream	&operator<<(std::ostream &o, DiamondTrap const &i)
+{
+	o << i.getName();
+	return (o);
 }

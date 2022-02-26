@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/19 11:52:35 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/26 12:04:30 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ class ClapTrap
 		ClapTrap	&operator=(ClapTrap const &rhs);
 
 		// accessors
-		std::string		getName(void) const;
-		unsigned int	getHitPoint(void) const;
-		unsigned int	getEnergyPoint(void) const;
-		unsigned int	getAttackDamage(void) const;
+		virtual std::string	getName(void) const;
+		unsigned int		getHitPoint(void) const;
+		unsigned int		getEnergyPoint(void) const;
+		unsigned int		getAttackDamage(void) const;
 
 		// member functions
 		void	attack(const std::string &target);
