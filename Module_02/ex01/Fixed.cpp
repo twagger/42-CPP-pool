@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 09:24:29 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/26 09:31:55 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	Fixed::toInt(void) const
 
 Fixed	&Fixed::operator=(Fixed const &rhs)
 {
-	std::cout << ">> < Assignment operator called" << std::endl;
+	std::cout << ">> = Assignment operator called" << std::endl;
 	this->_value = rhs.getRawBits();
 	return (*this);
 }

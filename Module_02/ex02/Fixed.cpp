@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 09:26:07 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/26 09:32:05 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ Fixed	Fixed::max(Fixed const &f1, Fixed const &f2)
 Fixed	&Fixed::operator=(Fixed const &rhs)
 {
 	if (!SILENT)
-		std::cout << ">> < Assignment operator called" << std::endl;
+		std::cout << ">> = Assignment operator called" << std::endl;
 	this->_value = rhs.getRawBits();
 	return (*this);
 }
