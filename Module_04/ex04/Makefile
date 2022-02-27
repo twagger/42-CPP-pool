@@ -8,7 +8,9 @@ CC			= c++
 SRCS		= main.cpp \
 			  AMateria.cpp \
 			  Cure.cpp \
-			  Ice.cpp
+			  Ice.cpp \
+			  Character.cpp \
+			  MateriaSource.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 

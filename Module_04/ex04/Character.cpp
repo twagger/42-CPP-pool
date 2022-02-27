@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 10:32:24 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/27 11:00:09 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/27 11:28:30 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,26 @@
 ** Constructor and destructor
 */
 
-Character::Character(void) : _name("John Doe")
+Character::Character(void) : ICharacter(), _name("John Doe") 
 {
+	int	i;
+
 	if (!SILENT)
 		std::cout << ">> +🧙🏻‍♂️ Character default constructor called" << std::endl;
+	i = -1;
+	while (++i < INVENTORY_SIZE)
+		this->_inventory[i] = NULL;
 }
 
-Character::Character(std::string const &name) : _name(name)
+Character::Character(std::string const &name) : ICharacter(), _name(name)
 {
+	int	i;
+	
 	if (!SILENT)
 		std::cout << ">> +🧙🏻‍♂️ Character param constructor called" << std::endl;
+	i = -1;
+	while (++i < INVENTORY_SIZE)
+		this->_inventory[i] = NULL;
 }
 
 Character::Character(Character const &src)
@@ -47,7 +57,6 @@ Character::~Character(void)
 		std::cout << ">> -🧙🏻‍♂️ Character destructor called" << std::endl;
 }
 
-
 /*
 ** Member functions and acessors
 */
@@ -62,9 +71,9 @@ void	Character::equip(AMateria *m)
 	int i;
 
 	i = 0;
-	while (i < 4 && this->_inventory[i] != NULL)
+	while (i < INVENTORY_SIZE && this->_inventory[i] != NULL)
 		++i;
-	if (i < 4)
+	if (i < INVENTORY_SIZE)
 		this->_inventory[i] = m;
 	else
 		std::cout << "Inventory is full, the materia has not been added." << std::endl;
@@ -72,7 +81,7 @@ void	Character::equip(AMateria *m)
 
 void	Character::unequip(int idx)
 {
-	if (idx < 0 || idx > 3)
+	if (idx < 0 || idx > INVENTORY_SIZE - 1)
 	{
 		std::cout << "Wrong inventory index, please provide a correct index" << std::endl;
 		return ;
@@ -82,7 +91,7 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter &target)
 {
-	if (idx < 0 || idx > 3)
+	if (idx < 0 || idx > INVENTORY_SIZE - 1)
 	{
 		std::cout << "Wrong inventory index, please provide a correct index" << std::endl;
 		return ;
