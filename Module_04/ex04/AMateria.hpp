@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/27 11:30:44 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/27 12:04:38 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class AMateria
 		// Member functions
 		std::string const	&getType() const; //Returns the materia type
 		virtual AMateria	*clone() const = 0;
-		virtual void		use(ICharacter& target);
+		virtual void		use(ICharacter &target);
 	
 	protected:
 		std::string	_type;

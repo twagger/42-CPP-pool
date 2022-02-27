@@ -6,16 +6,17 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 09:26:30 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/27 11:25:42 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/27 12:03:24 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_HPP
 # define CHARACTER_HPP
 # include "ICharacter.hpp"
-# include "AMateria.hpp"
 # include <iostream>
 # define INVENTORY_SIZE 4
+
+class AMateria;
 
 class Character : public ICharacter
 {
@@ -30,10 +31,10 @@ class Character : public ICharacter
 		Character	&operator=(Character const &rhs);
 
 		// Member functions
-		virtual std::string const	&getName() const;
-		virtual void				equip(AMateria *m);
-		virtual void				unequip(int idx);
-		virtual void				use(int idx, ICharacter &target);
+		std::string const	&getName() const;
+		void				equip(AMateria *m);
+		void				unequip(int idx);
+		void				use(int idx, ICharacter &target);
 	
 	private:
 		std::string	_name;

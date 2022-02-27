@@ -6,11 +6,12 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/27 10:42:52 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/27 12:12:25 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 #ifdef SILENCE
 # define SILENT 1
 #else
@@ -53,6 +54,11 @@ AMateria::~AMateria(void)
 std::string const	&AMateria::getType(void) const
 {
 	return (this->_type);
+}
+
+void		AMateria::use(ICharacter &target)
+{
+	(void)target;
 }
 
 /*

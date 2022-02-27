@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 10:02:43 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/27 10:05:01 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/27 12:05:01 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ class IMateriaSource
 		virtual	~IMateriaSource() {}
 	
 		// Methods
-		virtual void		learnMateria(AMateria*) = 0;
-		virtual AMateria*	createMateria(std::string const & type) = 0;
+		virtual void		learnMateria(AMateria *) = 0;
+		virtual AMateria	*createMateria(std::string const &type) = 0;
 };
 
 #endif

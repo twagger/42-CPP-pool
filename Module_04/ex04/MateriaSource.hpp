@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 10:05:26 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/27 11:27:44 by twagner          ###   ########.fr       */
+/*   Updated: 2022/02/27 12:03:45 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class MateriaSource : public IMateriaSource
 		MateriaSource	&operator=(MateriaSource const &rhs);
 
 		// Member functions
-		virtual void		learnMateria(AMateria *m);
-		virtual AMateria	*createMateria(std::string const &type);
+		void		learnMateria(AMateria *m);
+		AMateria	*createMateria(std::string const &type);
 
 	private:
 		AMateria	*_stock[STOCK_SIZE];
