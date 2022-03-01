@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:17:24 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 17:05:47 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 10:35:45 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ Dog::Dog(void) : Animal("Dog")
 Dog::Dog(Dog const &src) : Animal("Dog")
 {
 	std::cout << ">> +🐕 Dog copy constructor called" << std::endl;
-	this->_brain = new Brain();
-	*this->_brain = *(src.getBrain());
+	*this = src;
 }
 
 Dog::~Dog(void)
@@ -40,6 +39,19 @@ Dog::~Dog(void)
 	if (!SILENT)
 		std::cout << ">> -🐕 Dog destructor called" << std::endl;
 	delete this->_brain;
+}
+
+/*
+** Operators overload
+*/
+
+// Assignment operator
+Dog	&Dog::operator=(Dog const &rhs)
+{
+	if (!SILENT)
+		std::cout << ">> =🐕 Dog assignment operator called" << std::endl;
+	*this->_brain = *(rhs.getBrain());
+	return (*this);
 }
 
 /*

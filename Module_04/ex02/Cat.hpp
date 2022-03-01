@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:22:59 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 17:26:13 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 09:18:50 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ class Cat : public AAnimal
 		Cat(void);
 		Cat(Cat const &src);
 		~Cat(void);
+
+		// operator overload
+		Cat	&operator=(Cat const &rhs);
 
 		// member functions	
 		void	makeSound(void) const;

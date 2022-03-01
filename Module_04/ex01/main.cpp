@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:12:03 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 17:10:23 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 11:31:15 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,20 @@ int main(void)
 	std::cout << "-----------------" << std::endl;
 	std::cout << "|   ARCH TEST   |" << std::endl;
 	std::cout << "-----------------" << std::endl;
-
-	// Creation of every cat and dog in the arch
+	/*
+	** Creation of every cat and dog in the arch
+	*/
+	std::cout << "** Creation of " << NB_ANIMALS / 2 << " Cats and "
+			  << NB_ANIMALS / 2 << " Dogs" << std::endl;
 	i = 0;
 	while (i < NB_ANIMALS / 2)
 		arch[i++] = new Dog();
 	while (i < NB_ANIMALS)
 		arch[i++] = new Cat();
-
-	// Deletion of every animal in the arch
+	/*
+	** Deletion of every animal in the arch
+	*/
+	std::cout << "** Deletion of all animals in the arch. " << std::endl;
 	i = -1;
 	while (++i < NB_ANIMALS)
 		delete arch[i];
@@ -42,11 +47,11 @@ int main(void)
 	std::cout << "-----------------" << std::endl;
 	std::cout << "|  BRAIN TEST   |" << std::endl;
 	std::cout << "-----------------" << std::endl;
-
 	// Creating a new cat with 2 ideas
 	Cat henry;
 	henry.addIdea("sleep");
 	henry.addIdea("eat");
+	henry.displayIdeas();
 	// Copying this animal to create another one
 	Cat gaston(henry);
 	// Removing an idea and adding a new one

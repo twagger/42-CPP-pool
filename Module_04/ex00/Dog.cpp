@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:17:24 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 17:06:23 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 09:13:41 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,18 @@ Dog::~Dog(void)
 {
 	if (!SILENT)
 		std::cout << ">> -🐕 Dog destructor called" << std::endl;
+}
+
+/*
+** Operators overload
+*/
+
+// Assignment operator
+Dog	&Dog::operator=(Dog const &)
+{
+	if (!SILENT)
+		std::cout << ">> =🐕 Dog assignment operator called" << std::endl;
+	return (*this);
 }
 
 /*

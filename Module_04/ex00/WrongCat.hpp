@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:22:59 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 16:50:55 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 09:14:17 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ class WrongCat : public WrongAnimal
 		WrongCat(void);
 		WrongCat(WrongCat const &src);
 		~WrongCat(void);
+
+		// operator overload
+		WrongCat	&operator=(WrongCat const &rhs);
 
 		// member functions
 		void	makeSound(void) const;

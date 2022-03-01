@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:26:16 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 17:06:12 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 09:13:01 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,18 @@ Cat::~Cat(void)
 {
 	if (!SILENT)
 		std::cout << ">> -🐈 Cat destructor called" << std::endl;
+}
+
+/*
+** Operators overload
+*/
+
+// Assignment operator
+Cat	&Cat::operator=(Cat const &)
+{
+	if (!SILENT)
+		std::cout << ">> =🐈 Cat assignment operator called" << std::endl;
+	return (*this);
 }
 
 /*

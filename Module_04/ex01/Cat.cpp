@@ -6,11 +6,12 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:26:16 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 17:03:41 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 13:45:26 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
+#include "Brain.hpp"
 #ifdef SILENCE
 # define SILENT 1
 #else
@@ -31,8 +32,7 @@ Cat::Cat(void) : Animal("Cat")
 Cat::Cat(Cat const &src) : Animal("Cat")
 {
 	std::cout << ">> +🐈 Cat copy constructor called" << std::endl;
-	this->_brain = new Brain();
-	*this->_brain = *(src.getBrain());
+	*this = src;
 }
 
 Cat::~Cat(void)
@@ -40,6 +40,20 @@ Cat::~Cat(void)
 	if (!SILENT)
 		std::cout << ">> -🐈 Cat destructor called" << std::endl;
 	delete this->_brain;
+}
+
+/*
+** Operators overload
+*/
+
+// Assignment operator
+Cat	&Cat::operator=(Cat const &rhs)
+{
+	if (!SILENT)
+		std::cout << ">> =🐈 Cat assignment operator called" << std::endl;
+	this->_brain = new Brain();
+	*this->_brain = *(rhs.getBrain());
+	return (*this);
 }
 
 /*

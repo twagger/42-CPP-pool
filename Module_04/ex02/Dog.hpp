@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:17:16 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 17:26:07 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 09:19:04 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ class Dog : public AAnimal
 		Dog(void);
 		Dog(Dog const &src);
 		~Dog(void);
+
+		// operator overload
+		Dog	&operator=(Dog const &rhs);
 
 		// member functions
 		void	makeSound(void) const;
