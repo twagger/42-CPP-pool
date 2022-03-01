@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 09:26:30 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/27 12:03:24 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 16:20:11 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Character : public ICharacter
 		Character(void);
 		Character(std::string const &name);
 		Character(Character const &src);
-		~Character(void);
+		virtual ~Character(void);
 
 		// Operator overload
 		Character	&operator=(Character const &rhs);

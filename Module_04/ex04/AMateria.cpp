@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/27 12:12:25 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 16:15:34 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,8 @@ std::string const	&AMateria::getType(void) const
 	return (this->_type);
 }
 
-void		AMateria::use(ICharacter &target)
+void	AMateria::use(ICharacter &)
 {
-	(void)target;
 }
 
 /*
