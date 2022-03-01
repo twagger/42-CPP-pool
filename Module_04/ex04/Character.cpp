@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 10:32:24 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/27 12:10:44 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 17:17:57 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ Character::~Character(void)
 {
 	if (!SILENT)
 		std::cout << ">> -🤴 Character destructor called" << std::endl;
+	for (int i = 0; i < INVENTORY_SIZE; i++)
+	{
+		if (this->_inventory[i])
+			delete this->_inventory[i];
+	}
 }
 
 /*
@@ -78,14 +83,16 @@ void	Character::equip(AMateria *m)
 	if (i < INVENTORY_SIZE)
 		this->_inventory[i] = m;
 	else
-		std::cout << "Inventory is full, the materia has not been added." << std::endl;
+	{
+		std::cout << "<ERROR> Inventory is full, the materia has not been added." << std::endl;
+	}
 }
 
 void	Character::unequip(int idx)
 {
 	if (idx < 0 || idx > INVENTORY_SIZE - 1)
 	{
-		std::cout << "Wrong inventory index, please provide a correct index" << std::endl;
+		std::cout << "<ERROR> Wrong inventory index, please provide a correct index" << std::endl;
 		return ;
 	}
 	this->_inventory[idx] = NULL;
@@ -95,12 +102,12 @@ void	Character::use(int idx, ICharacter &target)
 {
 	if (idx < 0 || idx > INVENTORY_SIZE - 1)
 	{
-		std::cout << "Wrong inventory index, please provide a correct index" << std::endl;
+		std::cout << "<ERROR> Wrong inventory index, please provide a correct index" << std::endl;
 		return ;
 	}
 	else if (this->_inventory[idx] == NULL)
 	{
-		std::cout << "Inventory index is empty, please provide an index containing a materia" << std::endl;
+		std::cout << "<ERROR> Inventory index is empty, please provide an index containing a materia" << std::endl;
 		return ;
 	}
 	this->_inventory[idx]->use(target);

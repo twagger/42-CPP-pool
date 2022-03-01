@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 11:01:59 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/27 11:29:59 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 17:16:27 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ MateriaSource::~MateriaSource(void)
 {
 	if (!SILENT)
 		std::cout << ">> -🌱 MateriaSource destructor called" << std::endl;
+	for (int i = 0; i < STOCK_SIZE; i++)
+	{
+		if (this->_stock[i])
+			delete this->_stock[i];
+	}
 }
 
 
@@ -60,7 +65,10 @@ void	MateriaSource::learnMateria(AMateria *m)
 	if (i < STOCK_SIZE)
 		this->_stock[i] = m;
 	else
-		std::cout << "Stock is full, the materia has not been saved." << std::endl;
+	{
+		std::cout << "<ERROR> Stock is full, the materia has not been saved." << std::endl;
+		delete m;
+	}
 }
 
 AMateria	*MateriaSource::createMateria(std::string const &type)
@@ -76,8 +84,8 @@ AMateria	*MateriaSource::createMateria(std::string const &type)
 		}
 		++i;
 	}
-	std::cout << "No materia found with the name " << type << "in the materia source" << std::endl;
-	return (NULL);
+	std::cout << "<ERROR> No materia found with the name " << type << " in the materia source" << std::endl;
+	return (0);
 }
 
 /*
