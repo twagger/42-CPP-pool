@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:12:03 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/01 17:20:55 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 17:31:39 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,22 @@ int main(void)
 	me->use(0, *bob);
 	me->use(1, *bob);
 
+	std::cout << "------------------" << std::endl;
+	std::cout << "| <MAX> CREATION |" << std::endl;
+	std::cout << "------------------" << std::endl;
+	ICharacter* max = new Character("max");
+	max = me;
+
+	std::cout << "---------------------" << std::endl;
+	std::cout << "| <MAX> MATERIA USE |" << std::endl;
+	std::cout << "---------------------" << std::endl;
+	max->use(0, *me);
+	max->use(1, *bob);
+
 	std::cout << "--------------------" << std::endl;
 	std::cout << "|     CLEANING     |" << std::endl;
 	std::cout << "--------------------" << std::endl;
+	delete max;
 	delete bob;
 	delete me;
 	delete src;

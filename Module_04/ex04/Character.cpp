@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 10:32:24 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/01 17:17:57 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 17:24:33 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,18 @@ void	Character::use(int idx, ICharacter &target)
 */
 
 // Assignment operator
-Character	&Character::operator=(Character const &)
+Character	&Character::operator=(Character const &rhs)
 {
 	if (!SILENT)
 		std::cout << ">> =🤴 Character assignment operator called" << std::endl;
+	for (int i = 0; i < INVENTORY_SIZE; i++)
+	{
+		if (this->_inventory[i])
+			delete this->_inventory[i];
+		if (rhs._inventory[i])
+		{
+			this->_inventory[i] = rhs._inventory[i]->clone();
+		}
+	}
 	return (*this);
 }
