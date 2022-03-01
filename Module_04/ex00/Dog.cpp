@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 11:17:24 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/01 09:13:41 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 15:49:45 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ Dog::Dog(void) : Animal("Dog")
 
 Dog::Dog(Dog const &src) : Animal("Dog")
 {
-	std::cout << ">> +🐕 Dog copy constructor called" << std::endl;
-	(void)src;
+	if (!SILENT)
+		std::cout << ">> +🐕 Dog copy constructor called" << std::endl;
+	*this = src;
 }
 
 Dog::~Dog(void)

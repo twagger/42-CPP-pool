@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:26:16 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/01 13:45:26 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 16:03:17 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ Cat::Cat(void) : Animal("Cat")
 
 Cat::Cat(Cat const &src) : Animal("Cat")
 {
-	std::cout << ">> +🐈 Cat copy constructor called" << std::endl;
+	if (!SILENT)
+		std::cout << ">> +🐈 Cat copy constructor called" << std::endl;
+	this->_brain = NULL;
 	*this = src;
 }
 
@@ -51,8 +53,9 @@ Cat	&Cat::operator=(Cat const &rhs)
 {
 	if (!SILENT)
 		std::cout << ">> =🐈 Cat assignment operator called" << std::endl;
-	this->_brain = new Brain();
-	*this->_brain = *(rhs.getBrain());
+	if (this->_brain)
+		delete this->_brain;
+	this->_brain = new Brain(*(rhs.getBrain()));
 	return (*this);
 }
 

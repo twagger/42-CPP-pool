@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:12:03 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/01 11:31:15 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 16:01:28 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int main(void)
 	Cat henry;
 	henry.addIdea("sleep");
 	henry.addIdea("eat");
-	henry.displayIdeas();
 	// Copying this animal to create another one
 	Cat gaston(henry);
 	// Removing an idea and adding a new one

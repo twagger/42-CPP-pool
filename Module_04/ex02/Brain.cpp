@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 12:56:52 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 16:59:05 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 16:12:07 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ Brain::Brain(void)
 
 Brain::Brain(Brain const &src)
 {
-	std::cout << ">> +🧠 Brain copy constructor called" << std::endl;
+	if (!SILENT)
+		std::cout << ">> +🧠 Brain copy constructor called" << std::endl;
 	*this = src;
 }
 
@@ -53,8 +54,10 @@ Brain	&Brain::operator=(Brain const &rhs)
 	i = -1;
 	while (++i < 100)
 	{
-		if (!rhs._ideas[i].empty())
-			this->_ideas[i]	= rhs._ideas[i];
+		if (!rhs.ideas[i].empty())
+			this->ideas[i]	= rhs.ideas[i];
+		else
+			this->ideas[i] = "";
 	}
 	return (*this);
 }
@@ -68,11 +71,11 @@ int	Brain::addIdea(const std::string idea)
 	int	i;
 
 	i = 0;
-	while (i < 100 && !this->_ideas[i].empty())
+	while (i < 100 && !this->ideas[i].empty())
 		++i;
 	if (i < 100)
 	{
-		this->_ideas[i] = idea;
+		this->ideas[i] = idea;
 		return (i);
 	}
 	return (-1);	
@@ -82,8 +85,8 @@ int Brain::removeIdea(int num)
 {
 	if (num > 0 && num < 100)
 	{
-		if (!this->_ideas[num].empty())
-			this->_ideas[num].clear();
+		if (!this->ideas[num].empty())
+			this->ideas[num].clear();
 		return (0);
 	}
 	return (1);
@@ -92,12 +95,9 @@ int Brain::removeIdea(int num)
 
 void	Brain::displayIdeas(void) const
 {
-	int i;
-
-	i = -1;
-	while (++i < 100)
+	for (int i = 0; i < 100; i++)
 	{
-		if (!this->_ideas[i].empty())
-			std::cout << "-Idea [" << i << "] is " << this->_ideas[i] << std::endl;
+		if (!this->ideas[i].empty())
+			std::cout << "-Idea [" << i << "] is " << this->ideas[i] << std::endl;
 	}
 }

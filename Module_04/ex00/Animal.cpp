@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 17:20:11 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 15:49:12 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ Animal::Animal(std::string type) : _type(type)
 
 Animal::Animal(Animal const &src)
 {
-	std::cout << ">> +🐾 Animal copy constructor called" << std::endl;
+	if (!SILENT)
+		std::cout << ">> +🐾 Animal copy constructor called" << std::endl;
 	*this = src;
 }
 

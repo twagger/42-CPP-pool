@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 12:56:52 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/01 13:41:35 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 15:57:14 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ Brain::Brain(void)
 
 Brain::Brain(Brain const &src)
 {
-	std::cout << ">> +🧠 Brain copy constructor called" << std::endl;
+	if (!SILENT)
+		std::cout << ">> +🧠 Brain copy constructor called" << std::endl;
 	*this = src;
 }
 
@@ -52,6 +53,8 @@ Brain	&Brain::operator=(Brain const &rhs)
 	{
 		if (!rhs.ideas[i].empty())
 			this->ideas[i] = rhs.ideas[i];
+		else
+			this->ideas[i] = "";
 	}
 	return (*this);
 }

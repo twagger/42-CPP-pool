@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 12:43:50 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 16:14:01 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 16:10:13 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ class Brain
 		int		removeIdea(int num);
 		void	displayIdeas(void) const;
 
-	private:
-		std::string	_ideas[100];
+		std::string	ideas[100];
 };
 
 #endif

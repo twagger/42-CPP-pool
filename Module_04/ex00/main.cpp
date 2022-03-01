@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:12:03 by twagner           #+#    #+#             */
-/*   Updated: 2022/02/26 12:29:32 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/01 15:47:03 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,19 @@ int main(void)
 	std::cout << "--------------------------------------------" << std::endl;
 	std::cout << "| Animals should output cat and dog sounds |" << std::endl;
 	std::cout << "--------------------------------------------" << std::endl;
-	std::cout << j->getType() << " : ";
+	std::cout << *j << " : ";
 	i->makeSound();
-	std::cout << i->getType() << " : ";
+	std::cout << *i << " : ";
 	j->makeSound();
-	std::cout << meta->getType() << " : ";
+	std::cout << *meta << " : ";
 	meta->makeSound();
 
 	std::cout << "---------------------------------------------" << std::endl;
 	std::cout << "| Animals should output Wrong animals sounds |" << std::endl;
 	std::cout << "---------------------------------------------" << std::endl;
-	std::cout << k->getType() << " : ";
+	std::cout << *k << " : ";
 	k->makeSound();
-	std::cout << l->getType() << " : ";
+	std::cout << *l << " : ";
 	l->makeSound();
 
 	delete meta;
