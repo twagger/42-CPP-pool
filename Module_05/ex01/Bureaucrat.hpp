@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/08 13:05:56 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/08 16:26:10 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Bureaucrat
 		Bureaucrat(void);
 		Bureaucrat(std::string name, unsigned int grade);
 		Bureaucrat(Bureaucrat const &src);
-		virtual	~Bureaucrat(void);
+		~Bureaucrat(void);
 
 		// operator overload
 		Bureaucrat	&operator=(Bureaucrat const &rhs);
@@ -49,7 +49,7 @@ class Bureaucrat
 				virtual const char	*what() const throw();
 		};
 
-	protected:
+	private:
 		std::string		_name;
 		unsigned int	_grade;
 };

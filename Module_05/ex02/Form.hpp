@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/08 16:26:20 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/08 16:29:17 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	public:
 		// Constructors and destructor
-		Form(void);
-		Form(std::string name, unsigned int gradeToSign, unsigned int gradeToExecute);
-		Form(Form const &src);
-		~Form(void);
+		AForm(void);
+		AForm(std::string name, unsigned int gradeToSign, unsigned int gradeToExecute);
+		AForm(AForm const &src);
+		virtual	~AForm(void);
 
 		// operator overload
-		Form	&operator=(Form const &rhs);
+		AForm	&operator=(AForm const &rhs);
 
 		// accessors
 		std::string		getName(void) const;
@@ -35,7 +35,7 @@ class Form
 		unsigned int	getGradeToExecute(void) const;
 
 		// member functions
-		void	beSigned(const Bureaucrat *bur);
+		virtual void	beSigned(const Bureaucrat *bur) = 0;
 
 		// exceptions
 		class GradeTooHighException : public std::exception
@@ -57,6 +57,6 @@ class Form
 		const unsigned int	_gradeToExecute;
 };
 
-std::ostream	&operator<<(std::ostream &o, Form const &i);
+std::ostream	&operator<<(std::ostream &o, AForm const &i);
 
 #endif
