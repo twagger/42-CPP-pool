@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/08 16:34:42 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/08 17:18:47 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@
 */
 
 ShruberryCreationForm::ShruberryCreationForm(void) 
-: AForm("Default Shruberry form", 145, 137)
+: AForm("Default Shruberry form", 145, 137), _target("Default Target")
 {
 	if (!SILENT)
 		std::cout << ">> +🌳 ShruberryCreationForm default constructor called" << std::endl;
 }
 
-ShruberryCreationForm::ShruberryCreationForm(std::string name) 
-: AForm(name, 145, 137)
+ShruberryCreationForm::ShruberryCreationForm(std::string target) 
+: AForm("Shruberry form", 145, 137), _target(target)
 {
 	if (!SILENT)
 		std::cout << ">> +🌳 ShruberryCreationForm param constructor called" << std::endl;
@@ -43,6 +43,7 @@ ShruberryCreationForm::ShruberryCreationForm(ShruberryCreationForm const &src)
 {
 	if (!SILENT)
 		std::cout << ">> +🌳 ShruberryCreationForm copy constructor called" << std::endl;
+	*this = src;
 }
 
 ShruberryCreationForm::~ShruberryCreationForm(void)
@@ -55,14 +56,19 @@ ShruberryCreationForm::~ShruberryCreationForm(void)
 ** Member functions & accessors
 */
 
-void	ShruberryCreationForm::execute(Bureaucrat const *bur, std::string &target, unsigned int nbTree) const
+std::string	ShruberryCreationForm::getTarget(void) const
 {
-	if (bur->getGrade() > this->getGradeToExecute())
+	return (this->_target);
+}
+
+void	ShruberryCreationForm::execute(Bureaucrat const &executor) const
+{
+	if (executor.getGrade() > this->getGradeToExecute())
 		throw AForm::GradeTooLowException();
 	else
 	{
-		std::ofstream	ofile(target.append("_shruberry"));
-		for (int i = 0; i < nbTree; i++)
+		std::ofstream	ofile(this->getTarget().append("_shruberry"));
+		for (int i = 0; i < 10; i++)
 		{
 		    ofile << "       ###" << std::endl
 				  << "      #o###" << std::endl
@@ -81,9 +87,10 @@ void	ShruberryCreationForm::execute(Bureaucrat const *bur, std::string &target, 
 */
 
 // Assignment operator
-ShruberryCreationForm	&ShruberryCreationForm::operator=(ShruberryCreationForm const &)
+ShruberryCreationForm	&ShruberryCreationForm::operator=(ShruberryCreationForm const &rhs)
 {
 	if (!SILENT)
 		std::cout << ">> =🌳 ShruberryCreationForm assignment operator called" << std::endl;
+	this->_target = rhs.getTarget();
 	return (*this);
 }

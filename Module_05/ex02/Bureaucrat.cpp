@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/08 13:29:24 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/08 17:02:51 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	Bureaucrat::decreaseGrade(void)
 		this->_grade += 1;
 }
 
-void	Bureaucrat::signForm(Form &form) const
+void	Bureaucrat::signForm(AForm &form) const
 {
 	try
 	{
@@ -95,7 +95,7 @@ void	Bureaucrat::signForm(Form &form) const
 		std::cerr << this->getName() 
 			  << " signed " << form.getName() << std::endl;
 	}
-	catch (Form::GradeTooLowException& e)
+	catch (AForm::GradeTooLowException& e)
 	{
 		std::cerr << this->getName() 
 				  << " could'nt sign " << form.getName()
@@ -106,6 +106,26 @@ void	Bureaucrat::signForm(Form &form) const
 		std::cerr << this->getName() 
 			  << " could'nt sign " << form.getName()
 			  << " because " << e.what() << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const &form) const
+{
+	try
+	{
+		this->executeForm(form);
+	}
+	catch (AForm::GradeTooLowException& e)
+	{
+		std::cerr << this->getName() 
+				  << " could'nt execute " << form.getName()
+				  << " because " << e.what() << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << this->getName() 
+				  << " could'nt execute " << form.getName()
+				  << " because " << e.what() << std::endl;
 	}
 }
 

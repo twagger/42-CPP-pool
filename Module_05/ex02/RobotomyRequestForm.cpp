@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/08 16:49:11 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/08 17:25:06 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@
 */
 
 RobotomyRequestForm::RobotomyRequestForm(void) 
-: AForm("Default Robotomy form", 72, 45)
+: AForm("Default Robotomy form", 72, 45), _target("Default Target")
 {
 	if (!SILENT)
 		std::cout << ">> +🤖 RobotomyRequestForm default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string name) 
-: AForm(name, 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) 
+: AForm("Robotomy form", 72, 45), _target(target)
 {
 	if (!SILENT)
 		std::cout << ">> +🤖 RobotomyRequestForm param constructor called" << std::endl;
@@ -44,6 +44,7 @@ RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src)
 {
 	if (!SILENT)
 		std::cout << ">> +🤖 RobotomyRequestForm copy constructor called" << std::endl;
+	*this = src;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm(void)
@@ -56,19 +57,19 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 ** Member functions & accessors
 */
 
-void	RobotomyRequestForm::execute(Bureaucrat const *bur, std::string &target) const
+void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-	if (bur->getGrade() > this->getGradeToExecute())
+	if (executor.getGrade() > this->getGradeToExecute())
 		throw AForm::GradeTooLowException();
 	else
 	{
 		std::cout << ">> 🔩 **Drill sound** " << std::endl;
 		if ((rand() % 2) + 1 == 2)
 		{
-			std::cout << "✅ " << target << " has been robotomized with success !" << std::endl;
+			std::cout << "✅ " << this->getTarget() << " has been robotomized with success !" << std::endl;
 		}
 		else
-			std::cout << "❌ robotomization failed for " << target << "." << std::endl;
+			std::cout << "❌ robotomization failed for " << this->getTarget() << "." << std::endl;
 	}
 }
 
@@ -77,9 +78,10 @@ void	RobotomyRequestForm::execute(Bureaucrat const *bur, std::string &target) co
 */
 
 // Assignment operator
-RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &)
+RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &rhs)
 {
 	if (!SILENT)
 		std::cout << ">> =🤖 RobotomyRequestForm assignment operator called" << std::endl;
+	this->_target = rhs.getTarget();
 	return (*this);
 }

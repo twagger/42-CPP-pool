@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/08 16:29:17 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/08 17:13:24 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ class AForm
 		unsigned int	getGradeToExecute(void) const;
 
 		// member functions
-		virtual void	beSigned(const Bureaucrat *bur) = 0;
+		void			beSigned(const Bureaucrat *bur);
+		virtual void	execute(Bureaucrat const &executor) const = 0;
 
 		// exceptions
 		class GradeTooHighException : public std::exception

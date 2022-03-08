@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/08 16:54:23 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/08 17:27:47 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@
 */
 
 PresidentialPardonForm::PresidentialPardonForm(void) 
-: AForm("Default Shruberry form", 25, 5)
+: AForm("Default Presidential Pardon form", 25, 5), _target("Default target")
 {
 	if (!SILENT)
 		std::cout << ">> +🤴🏾 PresidentialPardonForm default constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string name) 
-: AForm(name, 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) 
+: AForm("Presidential Pardon form", 25, 5), _target(target)
 {
 	if (!SILENT)
 		std::cout << ">> +🤴🏾 PresidentialPardonForm param constructor called" << std::endl;
@@ -43,6 +43,7 @@ PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src
 {
 	if (!SILENT)
 		std::cout << ">> +🤴🏾 PresidentialPardonForm copy constructor called" << std::endl;
+	*this = src;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm(void)
@@ -55,13 +56,13 @@ PresidentialPardonForm::~PresidentialPardonForm(void)
 ** Member functions & accessors
 */
 
-void	PresidentialPardonForm::execute(Bureaucrat const *bur, std::string &target) const
+void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
-	if (bur->getGrade() > this->getGradeToExecute())
+	if (executor.getGrade() > this->getGradeToExecute())
 		throw AForm::GradeTooLowException();
 	else
 	{
-		std::cout << "✋ " << target << " has been forgiven by Zaphod Beeblebrox." << std::endl;
+		std::cout << "✋ " << this->getTarget() << " has been forgiven by Zaphod Beeblebrox." << std::endl;
 	}
 }
 
@@ -70,9 +71,10 @@ void	PresidentialPardonForm::execute(Bureaucrat const *bur, std::string &target)
 */
 
 // Assignment operator
-PresidentialPardonForm	&PresidentialPardonForm::operator=(PresidentialPardonForm const &)
+PresidentialPardonForm	&PresidentialPardonForm::operator=(PresidentialPardonForm const &rhs)
 {
 	if (!SILENT)
 		std::cout << ">> =🤴🏾 PresidentialPardonForm assignment operator called" << std::endl;
+	this->_target = rhs.getTarget();
 	return (*this);
 }

@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/08 16:34:34 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/08 17:21:38 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,28 @@
 # define SHRUBERRYCREATIONFORM_HPP
 # include <iostream>
 # include "Form.hpp"
-
-class Bureaucrat;
+# include "Bureaucrat.hpp"
 
 class ShruberryCreationForm : public AForm
 {
 	public:
 		// Constructors and destructor
 		ShruberryCreationForm(void);
-		ShruberryCreationForm(std::string name);
+		ShruberryCreationForm(std::string target);
 		ShruberryCreationForm(ShruberryCreationForm const &src);
 		virtual	~ShruberryCreationForm(void);
 
 		// operator overload
 		ShruberryCreationForm	&operator=(ShruberryCreationForm const &rhs);
 
+		// accessor
+		std::string	getTarget(void) const;
+
 		// member functions
-		void	execute(Bureaucrat const *bur, std::string &target, unsigned int nbTree) const;
+		virtual void	execute(Bureaucrat const &executor) const;
+	
+	private:
+		std::string	_target;
 };
 
 #endif
