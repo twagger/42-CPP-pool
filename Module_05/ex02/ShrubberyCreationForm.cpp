@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShruberryCreationForm.cpp                          :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/08 17:18:47 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/08 17:34:34 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShruberryCreationForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include <fstream>
@@ -24,50 +24,50 @@
 ** Constructor and destructor
 */
 
-ShruberryCreationForm::ShruberryCreationForm(void) 
-: AForm("Default Shruberry form", 145, 137), _target("Default Target")
+ShrubberyCreationForm::ShrubberyCreationForm(void) 
+: AForm("Default Shrubbery form", 145, 137), _target("Default Target")
 {
 	if (!SILENT)
-		std::cout << ">> +🌳 ShruberryCreationForm default constructor called" << std::endl;
+		std::cout << ">> +🌳 ShrubberyCreationForm default constructor called" << std::endl;
 }
 
-ShruberryCreationForm::ShruberryCreationForm(std::string target) 
-: AForm("Shruberry form", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) 
+: AForm("Shrubbery form", 145, 137), _target(target)
 {
 	if (!SILENT)
-		std::cout << ">> +🌳 ShruberryCreationForm param constructor called" << std::endl;
+		std::cout << ">> +🌳 ShrubberyCreationForm param constructor called" << std::endl;
 }
 
-ShruberryCreationForm::ShruberryCreationForm(ShruberryCreationForm const &src)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src)
 : AForm(src.getName(), 145, 137)
 {
 	if (!SILENT)
-		std::cout << ">> +🌳 ShruberryCreationForm copy constructor called" << std::endl;
+		std::cout << ">> +🌳 ShrubberyCreationForm copy constructor called" << std::endl;
 	*this = src;
 }
 
-ShruberryCreationForm::~ShruberryCreationForm(void)
+ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
 	if (!SILENT)
-		std::cout << ">> -🌳 ShruberryCreationForm destructor called" << std::endl;
+		std::cout << ">> -🌳 ShrubberyCreationForm destructor called" << std::endl;
 }
 
 /*
 ** Member functions & accessors
 */
 
-std::string	ShruberryCreationForm::getTarget(void) const
+std::string	ShrubberyCreationForm::getTarget(void) const
 {
 	return (this->_target);
 }
 
-void	ShruberryCreationForm::execute(Bureaucrat const &executor) const
+void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	if (executor.getGrade() > this->getGradeToExecute())
 		throw AForm::GradeTooLowException();
 	else
 	{
-		std::ofstream	ofile(this->getTarget().append("_shruberry"));
+		std::ofstream	ofile(this->getTarget().append("_shrubbery"));
 		for (int i = 0; i < 10; i++)
 		{
 		    ofile << "       ###" << std::endl
@@ -87,10 +87,10 @@ void	ShruberryCreationForm::execute(Bureaucrat const &executor) const
 */
 
 // Assignment operator
-ShruberryCreationForm	&ShruberryCreationForm::operator=(ShruberryCreationForm const &rhs)
+ShrubberyCreationForm	&ShrubberyCreationForm::operator=(ShrubberyCreationForm const &rhs)
 {
 	if (!SILENT)
-		std::cout << ">> =🌳 ShruberryCreationForm assignment operator called" << std::endl;
+		std::cout << ">> =🌳 ShrubberyCreationForm assignment operator called" << std::endl;
 	this->_target = rhs.getTarget();
 	return (*this);
 }
