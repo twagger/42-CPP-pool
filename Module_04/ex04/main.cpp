@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:12:03 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/01 17:31:39 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/08 09:32:23 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int main(void)
 	std::cout << "| <MAX> CREATION |" << std::endl;
 	std::cout << "------------------" << std::endl;
 	ICharacter* max = new Character("max");
-	max = me;
+	*max = *me;
 
 	std::cout << "---------------------" << std::endl;
 	std::cout << "| <MAX> MATERIA USE |" << std::endl;

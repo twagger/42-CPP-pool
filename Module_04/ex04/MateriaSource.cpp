@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 11:01:59 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/01 17:16:27 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/08 09:34:35 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ MateriaSource::~MateriaSource(void)
 			delete this->_stock[i];
 	}
 }
-
 
 /*
 ** Member functions and acessors
