@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/08 11:51:54 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/08 11:56:20 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ unsigned int	Bureaucrat::getGrade(void) const
 void	Bureaucrat::increaseGrade(void)
 {
 	if (!SILENT)
-		std::cout << ">> 🔼 Increase grade" << std::endl;
+		std::cout << "🔼 Increase grade" << std::endl;
 	if (this->getGrade() == 1)
 		throw Bureaucrat::GradeTooHighException();
 	else
@@ -79,7 +79,7 @@ void	Bureaucrat::increaseGrade(void)
 void	Bureaucrat::decreaseGrade(void)
 {
 	if (!SILENT)
-		std::cout << ">> 🔽 Decrease grade" << std::endl;
+		std::cout << "🔽 Decrease grade" << std::endl;
 	if (this->getGrade() == 150)
 		throw Bureaucrat::GradeTooLowException();
 	else
