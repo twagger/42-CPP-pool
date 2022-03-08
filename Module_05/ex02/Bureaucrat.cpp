@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/08 17:02:51 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/08 17:30:45 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,29 +87,29 @@ void	Bureaucrat::decreaseGrade(void)
 		this->_grade += 1;
 }
 
-void	Bureaucrat::signForm(AForm &form) const
+void	Bureaucrat::signForm(AForm *form) const
 {
 	try
 	{
-		form.beSigned(this);
+		form->beSigned(this);
 		std::cerr << this->getName() 
-			  << " signed " << form.getName() << std::endl;
+			  << " signed " << form->getName() << std::endl;
 	}
 	catch (AForm::GradeTooLowException& e)
 	{
 		std::cerr << this->getName() 
-				  << " could'nt sign " << form.getName()
+				  << " could'nt sign " << form->getName()
 				  << " because " << e.what() << std::endl;
 	}
 	catch (const std::exception& e)
 	{
 		std::cerr << this->getName() 
-			  << " could'nt sign " << form.getName()
+			  << " could'nt sign " << form->getName()
 			  << " because " << e.what() << std::endl;
 	}
 }
 
-void	Bureaucrat::executeForm(AForm const &form) const
+void	Bureaucrat::executeForm(AForm const *form) const
 {
 	try
 	{
@@ -118,13 +118,13 @@ void	Bureaucrat::executeForm(AForm const &form) const
 	catch (AForm::GradeTooLowException& e)
 	{
 		std::cerr << this->getName() 
-				  << " could'nt execute " << form.getName()
+				  << " could'nt execute " << form->getName()
 				  << " because " << e.what() << std::endl;
 	}
 	catch (const std::exception& e)
 	{
 		std::cerr << this->getName() 
-				  << " could'nt execute " << form.getName()
+				  << " could'nt execute " << form->getName()
 				  << " because " << e.what() << std::endl;
 	}
 }

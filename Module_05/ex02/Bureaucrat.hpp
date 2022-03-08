@@ -6,14 +6,15 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/08 16:59:40 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/08 17:29:26 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 # include <iostream>
-# include "Form.hpp"
+
+class AForm;
 
 class Bureaucrat
 {
@@ -34,8 +35,8 @@ class Bureaucrat
 		// member functions
 		void	increaseGrade(void);
 		void	decreaseGrade(void);
-		void	signForm(AForm &form) const;
-		void	executeForm(AForm const &form) const;
+		void	signForm(AForm *form) const;
+		void	executeForm(AForm const *form) const;
 
 		// exceptions
 		class GradeTooHighException : public std::exception
