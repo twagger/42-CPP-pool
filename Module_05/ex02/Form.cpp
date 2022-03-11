@@ -127,3 +127,8 @@ const char	*AForm::GradeTooLowException::what() const throw()
 {
 	return ("❌ The grade is too low !");
 }
+
+const char	*AForm::UnsignedFormException::what() const throw()
+{
+	return ("❌ The form is not signed !");
+}

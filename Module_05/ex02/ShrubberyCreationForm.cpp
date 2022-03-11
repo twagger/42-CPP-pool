@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/08 17:34:34 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/11 09:54:55 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include <fstream>
+#include <sstream>
 #ifdef SILENCE
 # define SILENT 1
 #else
@@ -63,11 +64,27 @@ std::string	ShrubberyCreationForm::getTarget(void) const
 
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
+	std::ofstream	ofile;
+
 	if (executor.getGrade() > this->getGradeToExecute())
+	{
 		throw AForm::GradeTooLowException();
+	}
+	else if (this->getSignedStatus() == false)
+	{
+		throw AForm::UnsignedFormException();
+	}
 	else
 	{
-		std::ofstream	ofile(this->getTarget().append("_shrubbery"));
+		try
+		{
+			ofile.open(this->getTarget().append("_shrubbery").c_str(), std::ofstream::out);
+		}
+		catch (std::ofstream::failure &e)
+		{
+			std::cout << "Error : cannot open file." << std::endl;
+			return ;
+		}
 		for (int i = 0; i < 10; i++)
 		{
 		    ofile << "       ###" << std::endl
@@ -78,8 +95,8 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 				  << "     # }|{  #" << std::endl
 				  << "       }|{" << std::endl << std::endl;
 		}
-		ofile.close();
 	}
+	ofile.close();
 }
 
 /*

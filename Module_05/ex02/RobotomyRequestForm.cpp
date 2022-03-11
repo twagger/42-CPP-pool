@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/08 17:25:06 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/11 11:10:23 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "Form.hpp"
 #include <fstream>
 #include <stdlib.h>
+#include <ctime>
 #ifdef SILENCE
 # define SILENT 1
 #else
@@ -57,14 +58,23 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 ** Member functions & accessors
 */
 
+std::string	RobotomyRequestForm::getTarget(void) const
+{
+	return (this->_target);
+}
+
 void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
+
 	if (executor.getGrade() > this->getGradeToExecute())
 		throw AForm::GradeTooLowException();
+	else if (this->getSignedStatus() == false)
+		throw AForm::UnsignedFormException();
 	else
 	{
 		std::cout << ">> 🔩 **Drill sound** " << std::endl;
-		if ((rand() % 2) + 1 == 2)
+		std::srand(std::time(NULL));
+		if (std::rand() % 2)
 		{
 			std::cout << "✅ " << this->getTarget() << " has been robotomized with success !" << std::endl;
 		}
