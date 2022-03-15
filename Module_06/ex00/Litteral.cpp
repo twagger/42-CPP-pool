@@ -6,12 +6,13 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 13:13:33 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/15 13:30:32 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/15 15:44:14 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Litteral.hpp"
 #include <cstdlib>
+#include <bits/stdc++.h>
 #ifdef SILENCE
 # define SILENT 1
 #else
@@ -58,22 +59,37 @@ char	*Litteral::getLitteral(void) const
 
 bool	Litteral::isNumber(void) const
 {
-	int len;
+	int			i;
+	int			f_count;
+	int			dot_count;
+	std::string	valid = "0123456789.f";
 
-	len = 0;
-	while (this->_litteral[len])
-		++len;
-	for (int i = 0; i < len; i++)
+	i = 0;
+	f_count = 0;
+	dot_count = 0;
+	if (this->_litteral[i] == '+' || this->_litteral[i] == '-')
+		++i;
+	while (this->_litteral[i] && valid.find(this->_litteral[i]) != std::string::npos)
 	{
-		if (this->_litteral[i] < '0' || this->_litteral[i] > '9')
+		switch (this->_litteral[i])
 		{
-			if (this->_litteral[i] != '+' && this->_litteral[i] != '-' 
-				&& this->_litteral[i] != '.' && this->_litteral[i] != 'f')
-				return (false);
-			else if (i != 0 || (i == 0 && len == 1))
-				return (false);
+			case '.':
+				if (dot_count != 0)
+					return (false);
+				++dot_count;
+				break;
+			case 'f':
+				if (f_count || this->_litteral[i + 1] != 0)
+					return (false);
+				++f_count;
+				break;
+			default:
+				break;
 		}
+		++i;
 	}
+	if (this->_litteral[i])
+		return(false);
 	return (true);
 }
 
@@ -116,10 +132,26 @@ char	Litteral::toChar(void) const
 
 int	Litteral::toInt(void) const
 {
-	if (this->isNumber() == false)
+	long	tmp;
+
+	tmp = static_cast<long>(std::atol(this->_litteral));
+	if (tmp > INT_MAX)
 	{
-		throw Litteral::ImpossibleConversionException();
+		throw Litteral::OverflowException();
 		return (0);
+	}
+	else if (tmp < INT_MIN)
+	{
+		throw Litteral::UnderflowException();
+		return (0);
+	}
+	else
+	{
+		if (this->isNumber() == false)
+		{
+			throw Litteral::ImpossibleConversionException();
+			return (0);
+		}
 	}
 	return (static_cast<int>(std::atoi(this->_litteral)));
 	
@@ -186,4 +218,14 @@ const char	*Litteral::ImpossibleConversionException::what() const throw()
 const char	*Litteral::NonDisplayableException::what() const throw()
 {
 	return ("Non displayable");
+}
+
+const char	*Litteral::OverflowException::what() const throw()
+{
+	return ("overflow");
+}
+
+const char	*Litteral::UnderflowException::what() const throw()
+{
+	return ("underflow");
 }

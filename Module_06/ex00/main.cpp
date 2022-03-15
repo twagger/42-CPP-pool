@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 13:06:44 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/15 13:46:58 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/15 15:45:16 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,14 @@ int	main(int ac, char **av)
 		std::cerr << "int : " << e.what() << std::endl;
 	}
 	catch(Litteral::NonDisplayableException &e)
+	{
+		std::cerr << "int : " << e.what() << std::endl;
+	}
+	catch(Litteral::OverflowException &e)
+	{
+		std::cerr << "int : " << e.what() << std::endl;
+	}
+	catch(Litteral::UnderflowException &e)
 	{
 		std::cerr << "int : " << e.what() << std::endl;
 	}

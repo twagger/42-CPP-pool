@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 13:14:00 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/15 13:23:45 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/15 15:38:37 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,18 @@ class Litteral
 		};
 
 		class NonDisplayableException : public std::exception
+		{
+			public:
+				virtual const char	*what() const throw();
+		};
+
+		class OverflowException : public std::exception
+		{
+			public:
+				virtual const char	*what() const throw();
+		};
+		
+		class UnderflowException : public std::exception
 		{
 			public:
 				virtual const char	*what() const throw();
