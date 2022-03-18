@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 17:27:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/15 17:30:55 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/18 10:33:47 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 class A : public Base
 {
 	public:
-		A(void){};
-		~A(void){};
+		A(void);
+		~A(void);
 };
 
 #endif

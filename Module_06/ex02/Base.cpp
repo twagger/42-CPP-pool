@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   C.hpp                                              :+:      :+:    :+:   */
+/*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 17:27:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/18 10:34:04 by twagner          ###   ########.fr       */
+/*   Created: 2022/03/18 10:34:48 by twagner           #+#    #+#             */
+/*   Updated: 2022/03/18 10:35:43 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C_HPP
-# define C_HPP
-# include "Base.hpp"
-
-class C : public Base
-{
-	public:
-		C(void);
-		~C(void);
-};
-
+#include "Base.hpp"
+#include <iostream>
+#ifdef SILENCE
+# define SILENT 1
+#else
+# define SILENT 0
 #endif
+
+/*
+** Constructor and destructor
+*/
+
+Base::Base(void)
+{
+	if (!SILENT)
+		std::cout << ">> +💠 base constructor called" << std::endl;
+}
+
+Base::~Base(void)
+{
+	if (!SILENT)
+		std::cout << ">> -💠 base destructor called" << std::endl;
+}

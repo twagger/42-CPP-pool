@@ -5,7 +5,11 @@ CC			= c++
 
 # SOURCES
 ################################################################################
-SRCS		= main.cpp
+SRCS		= main.cpp \
+			  A.cpp \
+			  B.cpp \
+			  C.cpp \
+			  Base.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 # EXECUTABLES & LIBRARIES

@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 17:24:16 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/15 17:29:27 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/18 10:50:55 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 class Base
 {
 	public:
-		// Constructor and destructors
-		Base(void){};
-		~Base(void){};
+		Base(void);
+		virtual ~Base(void);
 };
 
 #endif
