@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:12:03 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/01 15:47:03 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/18 11:30:14 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int main(void)
 	std::cout << "| Animals should output cat and dog sounds |" << std::endl;
 	std::cout << "--------------------------------------------" << std::endl;
 	std::cout << *j << " : ";
-	i->makeSound();
-	std::cout << *i << " : ";
 	j->makeSound();
+	std::cout << *i << " : ";
+	i->makeSound();
 	std::cout << *meta << " : ";
 	meta->makeSound();
 
