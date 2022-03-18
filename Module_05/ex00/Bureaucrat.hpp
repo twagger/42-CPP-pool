@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:14:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/08 16:25:56 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/18 11:50:18 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ class Bureaucrat
 		};
 
 	private:
-		std::string		_name;
-		unsigned int	_grade;
+		const std::string	_name;
+		unsigned int		_grade;
 };
 
 std::ostream	&operator<<(std::ostream &o, Bureaucrat const &i);

@@ -6,8 +6,7 @@ CC			= c++
 # SOURCES
 ################################################################################
 SRCS		= main.cpp \
-			  Bureaucrat.cpp \
-			  Form.cpp
+			  Bureaucrat.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 # EXECUTABLES & LIBRARIES
