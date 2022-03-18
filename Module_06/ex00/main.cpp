@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 13:06:44 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/15 15:45:16 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/18 12:14:40 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ int	main(int ac, char **av)
 		res_char = litteral.toChar();
 		std::cout << "char : " << res_char << std::endl;
 	}
-	catch(Litteral::ImpossibleConversionException &e)
+	catch (Litteral::ImpossibleConversionException &e)
 	{
 		std::cerr << "char : " << e.what() << std::endl;
 	}
-	catch(Litteral::NonDisplayableException &e)
-	{
+	catch (Litteral::NonDisplayableException &e)
+	{ 
 		std::cerr << "char : " << e.what() << std::endl;
 	}
 
@@ -48,19 +48,19 @@ int	main(int ac, char **av)
 		res_int = litteral.toInt();
 		std::cout << "int : " << res_int << std::endl;
 	}
-	catch(Litteral::ImpossibleConversionException &e)
+	catch (Litteral::ImpossibleConversionException &e)
 	{
 		std::cerr << "int : " << e.what() << std::endl;
 	}
-	catch(Litteral::NonDisplayableException &e)
+	catch (Litteral::NonDisplayableException &e)
 	{
 		std::cerr << "int : " << e.what() << std::endl;
 	}
-	catch(Litteral::OverflowException &e)
+	catch (Litteral::OverflowException &e)
 	{
 		std::cerr << "int : " << e.what() << std::endl;
 	}
-	catch(Litteral::UnderflowException &e)
+	catch (Litteral::UnderflowException &e)
 	{
 		std::cerr << "int : " << e.what() << std::endl;
 	}
@@ -72,11 +72,11 @@ int	main(int ac, char **av)
 		std::cout << std::setprecision(1) << std::fixed
 				  << "float : " << res_float << "f" << std::endl;
 	}
-	catch(Litteral::ImpossibleConversionException &e)
+	catch (Litteral::ImpossibleConversionException &e)
 	{
 		std::cerr << "float : " << e.what() << std::endl;
 	}
-	catch(Litteral::NonDisplayableException &e)
+	catch (Litteral::NonDisplayableException &e)
 	{
 		std::cerr << "float : " << e.what() << std::endl;
 	}
@@ -88,11 +88,11 @@ int	main(int ac, char **av)
 		std::cout << std::setprecision(1) << std::fixed
 				  << "double : " << res_double << std::endl;
 	}
-	catch(Litteral::ImpossibleConversionException &e)
+	catch (Litteral::ImpossibleConversionException &e)
 	{
 		std::cerr << "double : " << e.what() << std::endl;
 	}
-	catch(Litteral::NonDisplayableException &e)
+	catch (Litteral::NonDisplayableException &e)
 	{
 		std::cerr << "double : " << e.what() << std::endl;
 	}
