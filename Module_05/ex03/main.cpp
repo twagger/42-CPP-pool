@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:12:03 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/11 12:20:50 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/18 12:08:17 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int main(void)
 	std::cout << "\033[1;35m---[ Intern create a Presidential form with empty target ]---\033[0m" << std::endl;
 	try
 	{
-		form = noNameGuy.makeForm("wrong", "");
+		form = noNameGuy.makeForm("presidential pardon", "");
 	}
 	catch (Intern::noTargetException &e)
 	{

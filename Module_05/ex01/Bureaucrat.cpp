@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 10:23:07 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/08 13:29:24 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/18 11:56:07 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name)
 		this->_grade = grade;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &src)
+Bureaucrat::Bureaucrat(Bureaucrat const &src) : _name("Mr Copy")
 {
 	if (!SILENT)
 		std::cout << ">> +💼 Bureaucrat copy constructor called" << std::endl;
@@ -118,7 +118,6 @@ Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &rhs)
 {
 	if (!SILENT)
 		std::cout << ">> =💼 Bureaucrat assignment operator called" << std::endl;
-	this->_name = rhs.getName();
 	this->_grade = rhs.getGrade();
 	return (*this);
 }
