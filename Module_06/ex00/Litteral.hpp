@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 13:14:00 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/15 15:38:37 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/19 10:39:45 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ class Litteral
 {
 	public:
 		// Constructors and destructor
-		Litteral(void);
 		Litteral(char *litteral);
 		Litteral(Litteral const &src);
 		~Litteral(void);
@@ -61,6 +60,7 @@ class Litteral
 		};
 
 	private:
+		Litteral(void);
 		char	*_litteral;
 };
 
