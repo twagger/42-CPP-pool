@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 11:57:38 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/19 12:05:54 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/19 15:46:53 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,19 @@ class Array
 
 		// Operator overload
 		Array	&operator=(const Array &rhs);
+		T		&operator[](unsigned int i);
 
 		// Accessors
-		T	&getItem(unsigned int i) const;
+		T				&getItem(unsigned int i) const;
+		unsigned int	getSize(void) const;
 
 		// Member functions
 		unsigned int	size(void) const;
 		
 	private:
-		T	*_arr;
+		T				*_array;
+		unsigned int	_size;
+		bool			_isAllocated;
 };
 
 # include "Array.tpp"
