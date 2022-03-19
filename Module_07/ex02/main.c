@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 16:58:41 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/19 11:54:40 by twagner          ###   ########.fr       */
+/*   Created: 2022/03/19 11:54:54 by twagner           #+#    #+#             */
+/*   Updated: 2022/03/19 11:56:39 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
+#include "Array.tpp"
 #include <iostream>
-#include <iomanip>
 
 template< typename T>
 void	ft_print(T item)
