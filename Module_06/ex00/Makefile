@@ -5,8 +5,7 @@ CC			= c++
 
 # SOURCES
 ################################################################################
-SRCS		= main.cpp \
-			  Litteral.cpp
+SRCS		= main.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 # EXECUTABLES & LIBRARIES
@@ -19,7 +18,7 @@ HEADERS		= .
 
 # FLAGS
 ################################################################################
-CPPFLAGS		:= -Wall -Wextra -Werror -Wno-conversion -std=c++98 -pedantic 
+CPPFLAGS		:= -Wall -Wextra -Werror -Wno-conversion -std=c++98 -pedantic
 
 ifeq ($(DEBUG), true)
 	CPPFLAGS	+= -fsanitize=address -g3 -O0
