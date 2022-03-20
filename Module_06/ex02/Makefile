@@ -22,7 +22,7 @@ HEADERS		= .
 
 # FLAGS
 ################################################################################
-CPPFLAGS		:= -Wall -Wextra -Werror -Wno-conversion -std=c++98
+CPPFLAGS		:= -Wall -Wextra -Werror -Wno-conversion -std=c++98 -pedantic
 
 ifeq ($(DEBUG), true)
 	CPPFLAGS	+= -fsanitize=address -g3 -O0
