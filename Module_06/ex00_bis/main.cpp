@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:06:18 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/20 11:05:11 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/20 11:12:25 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,17 +99,19 @@ void	init(char *str, t_type *data)
 	data->i_info.clear();
 	data->f_info.clear();
 	data->d_info.clear();
-	data->true_type = -1;
+	data->true_type = TT_ERROR;
 	data->value = static_cast<void *>(str);
 }
 
 void	display(t_type *data)
 {
+	std::string	types[5] = {"CHAR", "INT", "FLOAT", "DOUBLE", "ERROR"};
+
 	std::cout << std::endl;
 	std::cout << "\033[1;35m---[ Conversions ]---\033[0m" << std::endl;
-	
+
 	// TRUE TYPE
-	std::cout << "True type : " << data->true_type << std::endl;
+	std::cout << "True type : " << types[data->true_type] << std::endl;
 	// CHAR
 	if (!data->c_info.empty())
 		std::cout << "char: " << data->c_info << std::endl;
@@ -168,7 +170,7 @@ void	detect(char *str, t_type *data)
 		}
 	}
 	// check if it is a char
-	if (str[0] && !str[1] && str[0] >= 32 && str[0] < 127)
+	else if (str[0] && !str[1] && str[0] >= 32 && str[0] < 127)
 	{
 		data->true_type = TT_CHAR;
 		data->c = static_cast<char>(str[0]);
@@ -189,13 +191,10 @@ int main(int ac, char **av)
 
 	// data init
 	init(av[1], &data);
-
 	// detect true type
 	detect(av[1], &data);
-
 	// convert
 	convert(&data);
-
 	// display conversions
 	display(&data);
 

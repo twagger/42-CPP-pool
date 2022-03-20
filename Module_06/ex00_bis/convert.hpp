@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:46:14 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/20 11:01:08 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/20 11:10:40 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ enum	e_types
 	TT_CHAR,
 	TT_INT,
 	TT_FLOAT,
-	TT_DOUBLE
+	TT_DOUBLE,
+	TT_ERROR
 };
 
 typedef struct s_type
