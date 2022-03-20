@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:06:18 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/20 11:38:02 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/20 12:08:21 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cstdlib>
-#include <limits.h>
+#include <limits>
 
 size_t	ft_strlen(const char *s)
 {
@@ -145,11 +145,18 @@ void	convert(t_type *data)
 {
 	long int	li;
 
+	// switch case on true_type
+	// int > fromInt
+	// char > fromChar
+	// float > fromFloat
+	// double > fromDouble
+	// faire les petites fonctions ci dessus
+	// faire des petites fonctions toInt, toChar, toFloat, toDouble
 	// INT Convertion
 	li = std::strtol(static_cast<char *>(data->value), NULL, 10);
-	if (li > INT_MAX)
+	if (li > std::numeric_limits<int>::max())
 		data->i_info = "overflow";
-	else if (li < INT_MIN)
+	else if (li < std::numeric_limits<int>::min())
 		data->i_info = "underflow";
 	else
 	{
@@ -158,22 +165,45 @@ void	convert(t_type *data)
 	}
 }
 
-void	detect_type(char *str, t_type *data)
+void	detect_type(t_type *data)
 {
+	long double	ld;
+	char		*str;
+
+	str = static_cast<char *>(data->value);
 	// check if it is an int, float or double
 	if (isNumber(str) == true)
 	{
+		ld = std::strtold(str, NULL);
 		if (ft_strchr_index(str, 'f', 0) != -1)
 		{
 			data->true_type = TT_FLOAT;
+			if (ld > std::numeric_limits<float>::max())
+				data->f_info = "overflow";
+			else if (ld < std::numeric_limits<float>::min())
+				data->f_info = "underflow";
+			else
+				data->f = static_cast<float>(ld);
 		}
 		else if (ft_strchr_index(str, '.', 0) != -1)
 		{
 			data->true_type = TT_DOUBLE;
+			if (ld > std::numeric_limits<double>::max())
+				data->d_info = "overflow";
+			else if (ld < std::numeric_limits<double>::min())
+				data->d_info = "underflow";
+			else
+				data->d = static_cast<double>(ld);
 		}
 		else
 		{
 			data->true_type = TT_INT;
+			if (ld > std::numeric_limits<int>::max())
+				data->i_info = "overflow";
+			else if (ld < std::numeric_limits<int>::min())
+				data->i_info = "underflow";
+			else
+				data->i = static_cast<int>(ld);
 		}
 	}
 	// check if it is a char
@@ -181,7 +211,6 @@ void	detect_type(char *str, t_type *data)
 	{
 		data->true_type = TT_CHAR;
 		data->c = static_cast<char>(str[0]);
-		data->c_info.clear();
 	}
 }
 
@@ -199,7 +228,7 @@ int main(int ac, char **av)
 	// data init
 	init(av[1], &data);
 	// detect true type
-	detect_type(av[1], &data);
+	detect_type(&data);
 	// convert
 	convert(&data);
 	// display conversions
