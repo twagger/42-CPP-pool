@@ -6,14 +6,13 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 17:31:59 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/18 11:08:50 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/22 12:30:44 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <ctime>
 #include <stdlib.h>
-#include <typeinfo>
 #include "Base.hpp"
 #include "A.hpp"
 #include "B.hpp"
@@ -64,21 +63,21 @@ void identify(Base &p)
 		(void)a;
 		std::cout << "A" << std::endl;
 	}
-	catch(std::bad_cast &){}
+	catch(std::exception &){}
 	try
 	{
 		B	&b = dynamic_cast<B &>(p);
 		(void)b;
 		std::cout << "B" << std::endl;
 	}
-	catch(std::bad_cast &){}
+	catch(std::exception &){}
 	try
 	{
 		C	&c = dynamic_cast<C &>(p);
 		(void)c;
 		std::cout << "C" << std::endl;
 	}
-	catch(std::bad_cast &){}
+	catch(std::exception &){}
 }
 
 int	main(void)
