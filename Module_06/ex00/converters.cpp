@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:07:29 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/22 11:25:52 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/22 12:22:46 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	fromFloat(t_type *data)
 		{
 			data->i_info = "Overflow";
 		}
-		else if (data->f < std::numeric_limits<int>::min())
+		else if (data->f < -std::numeric_limits<int>::max())
 		{
 			data->i_info = "Underflow";
 		}
@@ -86,7 +86,7 @@ void	fromDouble(t_type *data)
 		{
 			data->i_info = "Overflow";
 		}
-		else if (data->d < std::numeric_limits<int>::min())
+		else if (data->d < -std::numeric_limits<int>::max())
 		{
 			data->i_info = "Underflow";
 		}
@@ -95,7 +95,7 @@ void	fromDouble(t_type *data)
 		{
 			data->f_info = "Overflow";
 		}
-		else if (data->d < std::numeric_limits<float>::min())
+		else if (data->d < -std::numeric_limits<float>::max())
 		{
 			data->f_info = "Underflow";
 		}
@@ -124,7 +124,7 @@ void	toInt(t_type *data)
 	ld = std::strtold(data->value, NULL);
 	if (ld > std::numeric_limits<int>::max())
 		data->i_info = "Overflow";
-	else if (ld < std::numeric_limits<int>::min())
+	else if (ld < -std::numeric_limits<int>::max())
 		data->i_info = "Underflow";
 	else
 		data->i = static_cast<int>(ld);
@@ -138,7 +138,7 @@ void	toFloat(t_type *data)
 	ld = std::strtold(data->value, NULL);
 	if (ld > std::numeric_limits<float>::max())
 		data->f_info = "Overflow";
-	else if (ld < std::numeric_limits<float>::min())
+	else if (ld < -std::numeric_limits<float>::max())
 		data->f_info = "Underflow";
 	else
 		data->f = static_cast<float>(ld);
@@ -149,9 +149,11 @@ void	toDouble(t_type *data)
 	long double	ld;
 	
 	ld = std::strtold(data->value, NULL);
+	std::cout << "value : " << ld << std::endl;
+	std::cout << "Limit : " << std::numeric_limits<double>::min() << std::endl;
 	if (ld > std::numeric_limits<double>::max())
 		data->d_info = "Overflow";
-	else if (ld < std::numeric_limits<double>::min())
+	else if (ld < -std::numeric_limits<double>::max())
 		data->d_info = "Underflow";
 	else
 		data->d = static_cast<double>(ld);
