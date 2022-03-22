@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:07:29 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/22 12:25:18 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/22 15:41:30 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ void	toInt(t_type *data)
 		data->i_info = "Underflow";
 	else
 		data->i = static_cast<int>(ld);
-	std::cout << "i: " << data->i << std::endl;
 }
 
 void	toFloat(t_type *data)
@@ -148,8 +147,6 @@ void	toDouble(t_type *data)
 	long double	ld;
 	
 	ld = std::strtold(data->value, NULL);
-	std::cout << "value : " << ld << std::endl;
-	std::cout << "Limit : " << std::numeric_limits<double>::min() << std::endl;
 	if (ld > std::numeric_limits<double>::max())
 		data->d_info = "Overflow";
 	else if (ld < -std::numeric_limits<double>::max())
