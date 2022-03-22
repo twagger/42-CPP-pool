@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 09:07:29 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/22 12:22:46 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/22 12:25:18 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ void	toChar(t_type *data)
 	if (data->c < 32 || data->c > 126)
 		data->c_info = "Non displayable";
 }
-
 
 void	toInt(t_type *data)
 {
