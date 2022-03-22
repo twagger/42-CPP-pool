@@ -6,12 +6,12 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 16:15:39 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/18 16:21:29 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/22 16:21:37 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 template< typename T >
-void	swap(T a, T b)
+void	swap(T &a, T &b)
 {
 	T	swap;
 
