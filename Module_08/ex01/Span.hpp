@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:00:14 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/25 12:38:39 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/25 13:17:06 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class Span
 
 		// Member functions
 		void	addNumber(int number);
+		void	addNumber(int *it, int *it_end);
 		int		shortestSpan(void) const;
 		int		longestSpan(void) const;
 
