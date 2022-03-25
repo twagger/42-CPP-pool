@@ -5,7 +5,8 @@ CC			= c++
 
 # SOURCES
 ################################################################################
-SRCS		= main.cpp
+SRCS		= main.cpp \
+			  Span.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 # EXECUTABLES & LIBRARIES
