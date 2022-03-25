@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:53:26 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/25 10:52:38 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/25 13:38:27 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(void)
 	// TEST 1
 	std::cout << std::endl;
 	std::cout << "\033[1;35m ---[ Vector OK : find 8 ]--- \033[0m" << std::endl;
-	std::vector<int>	vect;
+	std::span<int>	vect;
 	vect.push_back(5);
 	vect.push_back(8);
 	vect.push_back(-1);
