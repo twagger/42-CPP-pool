@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:27:48 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/25 13:22:08 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/26 14:33:20 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <exception>
 #include <limits>
 #include <cstdlib> 
+#include <vector>
 #ifdef SILENCE
 # define SILENT 1
 #else
@@ -112,17 +113,15 @@ void	Span::addNumber(int number)
 	this->_arr[this->_current_level] = number;
 }
 
-void	Span::addNumber(int *it, int *it_end)
+void	Span::addNumber(std::vector<int>::iterator it, std::vector<int>::iterator ite)
 {
 	if (this->_max_level < 0)
 		throw std::runtime_error("Table cannot contain any item");
 	if (this->_current_level == this->_max_level)
 		throw std::runtime_error("Table is full");
-	if (it == NULL || it_end == NULL || it_end - it == 0)
-		throw std::runtime_error("Range error");
 	for (int i = this->_current_level + 1; i < this->_max_level + 1; ++i)
 	{
-		if (it != it_end)
+		if (it != ite)
 		{
 			this->_arr[i] = *it;
 			++this->_current_level;
