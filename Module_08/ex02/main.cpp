@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:53:26 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/26 12:54:01 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/26 14:53:21 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,29 @@ int main(void)
 	{
 		std::cout << *it2 << std::endl;
 		++it2;
+	}
+	
+	// TEST 4
+	std::cout << std::endl;
+	std::cout << "\033[1;35m ---[ Mutant stack char tests ]--- \033[0m" << std::endl;
+	MutantStack<char> mstack2;
+	mstack2.push('s');
+	mstack2.push('o');
+	std::cout << mstack2.top() << std::endl;
+	mstack2.pop();
+	std::cout << mstack2.size() << std::endl;
+	mstack2.push('a');
+	mstack2.push('l');
+	mstack2.push('u');
+	mstack2.push('t');
+	MutantStack<char>::iterator it3 = mstack2.begin();
+	MutantStack<char>::iterator ite3 = mstack2.end();
+	++it3;
+	--it3;
+	while (it3 != ite3)
+	{
+		std::cout << *it3 << std::endl;
+		++it3;
 	}
 
 	// END OF PROGRAM
