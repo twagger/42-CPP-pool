@@ -6,12 +6,13 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 10:53:20 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/26 14:17:28 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/26 16:54:21 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <exception>
+#include <algorithm>
 
 #ifdef SILENCE
 # define SILENT 1
@@ -22,21 +23,16 @@
 template< typename T >
 int	easyfind(T container, int to_find)
 {
-	typename T::const_iterator	it;
-	int							index;
+	typename T::iterator	it;
 
-	index = 0;
-	for (it = container.begin(); it != container.end(); ++it)
+	it = std::find(container.begin(), container.end(), to_find);
+	if (it != container.end())
 	{
-		if (*it == to_find)
-		{
-			if (!SILENT)
-				std::cout << "I found it first in position : " << index << std::endl;
-			return (*it);
-		}
-		++index;
+		std::cout << "I found it : " << *it << std::endl;
+		return (*it);
 	}
-	throw std::runtime_error("The value is not in the container");
+	else
+		throw std::runtime_error("The value is not in the container");
 }
 
 template <typename T>
