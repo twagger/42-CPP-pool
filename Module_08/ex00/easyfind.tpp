@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 10:53:20 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/25 10:56:35 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/26 14:17:28 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,16 @@ int	easyfind(T container, int to_find)
 		++index;
 	}
 	throw std::runtime_error("The value is not in the container");
+}
+
+template <typename T>
+int easyfindWithControl(const T &t, int to_find, typename T::iterator*)
+{
+	return (easyfind(t, to_find));
+}
+
+int easyfindWithControl(...)
+{
+	throw std::runtime_error("The container doesn't have iterators");
+	return (0);
 }

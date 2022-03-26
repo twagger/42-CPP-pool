@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:53:26 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/25 17:21:07 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/26 14:19:41 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <vector>
 #include <list>
 #include <deque>
+#include <stack>
 
 int main(void)
 {
@@ -63,7 +64,7 @@ int main(void)
 	lst.push_back(42);
 	try
 	{
-		i = easyfind(lst, 42);
+		i = easyfindWithControl(lst, 42, NULL);
 		std::cout << i << std::endl;
 	}
 	catch (std::exception &e)
@@ -98,7 +99,7 @@ int main(void)
 	deck.push_front(48);
 	try
 	{
-		i = easyfind(deck, 42);
+		i = easyfindWithControl(deck, 42, NULL);
 		std::cout << i << std::endl;
 	}
 	catch (std::exception &e)
@@ -111,7 +112,24 @@ int main(void)
 	std::cout << "\033[1;35m ---[ Deque KO : find 41 ]--- \033[0m" << std::endl;
 	try
 	{
-		i = easyfind(deck, 41);
+		i = easyfindWithControl(deck, 41, NULL);
+		std::cout << i << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Error : " << e.what() << std::endl;
+	}
+
+	// TEST 7
+	std::cout << std::endl;
+	std::cout << "\033[1;35m ---[ Stack test : KO (stack has no iterators) ]--- \033[0m" << std::endl;
+	std::stack<int>	stk;
+	stk.push(5);
+	stk.push(8);
+	stk.push(-1);
+	try
+	{
+		i = easyfindWithControl(stk, 8, NULL);
 		std::cout << i << std::endl;
 	}
 	catch (std::exception &e)
