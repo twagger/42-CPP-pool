@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:27:48 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/26 14:33:20 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/26 17:33:51 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <limits>
 #include <cstdlib> 
 #include <vector>
+#include <algorithm>
 #ifdef SILENCE
 # define SILENT 1
 #else
@@ -37,10 +38,7 @@ Span::Span(unsigned int N) : _current_level(-1), _max_level(N - 1)
 	if (!SILENT)	
 		std::cout << ">> + Span param constructor called" << std::endl;
 	this->_arr = new int[N];
-	for (unsigned int i = 0; i < N; ++i)
-	{
-		this->_arr[i] = 0;
-	}
+	std::fill(this->_arr, this->_arr + this->_max_level + 1, 0);
 }
 
 Span::Span(const Span &src) : _arr(NULL), _current_level(src.getCurrentLevel()), _max_level(src.getMaxLevel())
@@ -71,10 +69,7 @@ Span	&Span::operator=(const Span &rhs)
 		delete [] this->_arr;
 	size = rhs.getMaxLevel() + 1;
 	this->_arr = new int[size];
-	for (int i = 0; i < size; ++i)
-	{
-		this->_arr[i] = rhs.getValue(i);
-	}
+	std::copy(this->_arr, this->_arr + size, rhs._arr);
 	return (*this);
 }
 
