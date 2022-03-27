@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:53:26 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/26 17:24:54 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/27 09:49:58 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int main(void)
 	std::cout << std::endl;
 	std::cout << "\033[1;35m ---[ List OK : find 42 ]--- \033[0m" << std::endl;
 	std::list<int>	lst(10);
-	std::fill_n(lst.begin(), 9, 43);
+	std::fill_n(lst.begin(), 10, 43);
 	std::fill_n(lst.begin(), 1, 42);
 	try
 	{
