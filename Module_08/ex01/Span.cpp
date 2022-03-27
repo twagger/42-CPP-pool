@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:27:48 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/27 11:30:58 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/27 15:58:34 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,20 @@
 ** Constructors and destructor
 */
 
-Span::Span(void) : _arr(NULL), _current_level(-1), _max_level(-1)
+Span::Span(void) : _max(0)
 {
 	if (!SILENT)	
 		std::cout << ">> + Span default constructor called" << std::endl;
 }
 
-Span::Span(unsigned int N) : _current_level(-1), _max_level(N - 1)
+Span::Span(unsigned int N) : _max(N)
 {
 	if (!SILENT)	
 		std::cout << ">> + Span param constructor called" << std::endl;
-	this->_arr = new int[N];
-	std::fill(this->_arr, this->_arr + this->_max_level + 1, 0);
+	this->_arr.reserve(N);
 }
 
-Span::Span(const Span &src) : _arr(NULL), _current_level(src.getCurrentLevel()), _max_level(src.getMaxLevel())
+Span::Span(const Span &src) : _max(src._max)
 {
 	if (!SILENT)	
 		std::cout << ">> + Span copy constructor called" << std::endl;	
@@ -52,7 +51,7 @@ Span::~Span()
 {
 	if (!SILENT)	
 		std::cout << ">> - Span destructor called" << std::endl;
-	delete [] this->_arr;
+	this->_arr.clear();
 }
 
 /*
@@ -61,15 +60,10 @@ Span::~Span()
 
 Span	&Span::operator=(const Span &rhs)
 {
-	int	size;
-
 	if (!SILENT)	
 		std::cout << ">> = Span assignment operator called" << std::endl;
-	if (this->_arr)
-		delete [] this->_arr;
-	size = rhs.getMaxLevel() + 1;
-	this->_arr = new int[size];
-	std::copy(rhs._arr, rhs._arr + size, this->_arr);
+	this->_arr.reserve(rhs._arr.capacity());
+	this->_arr.assign(rhs._arr.begin(), rhs._arr.end());
 	return (*this);
 }
 
@@ -77,21 +71,11 @@ Span	&Span::operator=(const Span &rhs)
 ** Accessors
 */
 
-int	Span::getMaxLevel(void) const
+int	Span::getValue(unsigned int i) const
 {
-	return (this->_max_level);
-}
-
-int	Span::getCurrentLevel(void) const
-{
-	return (this->_current_level);
-}
-
-int	Span::getValue(int i) const
-{
-	if (i > this->_max_level)
+	if (i >= this->_arr.capacity())
 		throw Span::OutOfRangeException();
-	return (this->_arr[i]);
+	return (this->_arr.at(i));
 }
 
 /*
@@ -100,19 +84,18 @@ int	Span::getValue(int i) const
 
 void	Span::addNumber(int number)
 {
-	if (this->_max_level < 0)
+	if (this->_max == 0)
 		throw Span::EmptySizeException();
-	if (this->_current_level == this->_max_level)
+	if (this->_arr.size() == this->_max)
 		throw Span::FullSpanException();
-	++this->_current_level;
-	this->_arr[this->_current_level] = number;
+	this->_arr.push_back(number);
 }
 
 void	Span::addNumber(std::vector<int>::iterator it, std::vector<int>::iterator ite)
 {
-	if (this->_max_level < 0)
+	if (this->_max == 0)
 		throw Span::EmptySizeException();
-	if (this->_current_level == this->_max_level)
+	if (this->_arr.size() == this->_max)
 		throw Span::FullSpanException();
 	try
 	{
@@ -128,15 +111,15 @@ void	Span::addNumber(std::vector<int>::iterator it, std::vector<int>::iterator i
 	}
 }
 
-int Span::shortestSpan(void) const
+int Span::shortestSpan(void)
 {
 	int	span = std::numeric_limits<int>::max();	
-	int	*it = this->_arr;
-	int	*ite = this->_arr + this->_current_level + 1;
+	std::vector<int>::iterator	it = this->_arr.begin();
+	std::vector<int>::iterator	ite = this->_arr.end();
 
-	if (this->getCurrentLevel() < 0)
+	if (this->_max == 0)
 		throw Span::EmptySizeException();
-	if (this->getCurrentLevel() == 0)
+	if (this->_arr.size() == 1)
 		throw Span::OneElementException();
 	std::sort(it, ite);
 	if (std::adjacent_find(it, ite) != ite)
@@ -152,12 +135,12 @@ int Span::shortestSpan(void) const
 
 int	Span::longestSpan(void) const
 {
-	int	*it = this->_arr;
-	int	*ite = this->_arr + this->_current_level + 1;
+	std::vector<int>::const_iterator	it = this->_arr.begin();
+	std::vector<int>::const_iterator	ite = this->_arr.end();
 
-	if (this->getCurrentLevel() < 0)
+	if (this->_max == 0)
 		throw Span::EmptySizeException();
-	if (this->getCurrentLevel() == 0)
+	if (this->_arr.size() == 1)
 		throw Span::OneElementException();
 	return (*std::max_element(it, ite) - *std::min_element(it, ite));
 }

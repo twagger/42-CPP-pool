@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:00:14 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/27 10:12:08 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/27 15:31:09 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,12 @@ class Span
 		Span	&operator=(const Span &rhs);
 
 		// Accessors
-		int	getMaxLevel(void) const;
-		int	getCurrentLevel(void) const;
-		int	getValue(int) const;
+		int	getValue(unsigned int i) const;
 
 		// Member functions
 		void	addNumber(int number);
 		void	addNumber(std::vector<int>::iterator it, std::vector<int>::iterator ite);
-		int		shortestSpan(void) const;
+		int		shortestSpan(void);
 		int		longestSpan(void) const;
 
 		// Exceptions
@@ -63,9 +61,8 @@ class Span
 
 	private:
 		Span(void);
-		int	*_arr;
-		int _current_level;
-		int	_max_level;
+		std::vector<int>	_arr;
+		long unsigned int	_max;
 };
 
 #endif
