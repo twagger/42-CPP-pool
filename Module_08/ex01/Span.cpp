@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:27:48 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/26 17:33:51 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/27 11:30:58 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ Span	&Span::operator=(const Span &rhs)
 		delete [] this->_arr;
 	size = rhs.getMaxLevel() + 1;
 	this->_arr = new int[size];
-	std::copy(this->_arr, this->_arr + size, rhs._arr);
+	std::copy(rhs._arr, rhs._arr + size, this->_arr);
 	return (*this);
 }
 
@@ -90,7 +90,7 @@ int	Span::getCurrentLevel(void) const
 int	Span::getValue(int i) const
 {
 	if (i > this->_max_level)
-		throw std::out_of_range("The index is out of range");
+		throw Span::OutOfRangeException();
 	return (this->_arr[i]);
 }
 
@@ -101,9 +101,9 @@ int	Span::getValue(int i) const
 void	Span::addNumber(int number)
 {
 	if (this->_max_level < 0)
-		throw std::runtime_error("Table cannot contain any item");
+		throw Span::EmptySizeException();
 	if (this->_current_level == this->_max_level)
-		throw std::runtime_error("Table is full");
+		throw Span::FullSpanException();
 	++this->_current_level;
 	this->_arr[this->_current_level] = number;
 }
@@ -111,56 +111,77 @@ void	Span::addNumber(int number)
 void	Span::addNumber(std::vector<int>::iterator it, std::vector<int>::iterator ite)
 {
 	if (this->_max_level < 0)
-		throw std::runtime_error("Table cannot contain any item");
+		throw Span::EmptySizeException();
 	if (this->_current_level == this->_max_level)
-		throw std::runtime_error("Table is full");
-	for (int i = this->_current_level + 1; i < this->_max_level + 1; ++i)
+		throw Span::FullSpanException();
+	try
 	{
-		if (it != ite)
+		while (it < ite)
 		{
-			this->_arr[i] = *it;
-			++this->_current_level;
+			this->addNumber(*it);
 			++it;
 		}
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
 	}
 }
 
 int Span::shortestSpan(void) const
 {
-	int span;
+	int	span = std::numeric_limits<int>::max();	
+	int	*it = this->_arr;
+	int	*ite = this->_arr + this->_current_level + 1;
 
-	span = std::numeric_limits<int>::max();
-	if (this->getCurrentLevel() <= 0)
-		throw std::runtime_error("Table is empty or contains only one element");
-	for (int i = 0; i < this->_current_level + 1; ++i)
+	if (this->getCurrentLevel() < 0)
+		throw Span::EmptySizeException();
+	if (this->getCurrentLevel() == 0)
+		throw Span::OneElementException();
+	std::sort(it, ite);
+	if (std::adjacent_find(it, ite) != ite)
+		return (0);
+	while (it < ite)
 	{
-		for (int j = 0; j < this->_current_level + 1; ++j)
-		{
-			if (i != j)
-			{
-				if (abs(this->_arr[i] - this->_arr[j]) < span)
-					span = abs(this->_arr[i] - this->_arr[j]);
-			}
-		}
+		if ((it + 1 != ite) && abs(*it - *(it + 1)) < span)
+			span = abs(*it - *(it + 1));
+		++it;
 	}
 	return (span);
 }
 
 int	Span::longestSpan(void) const
 {
-	int	min;
-	int	max;
+	int	*it = this->_arr;
+	int	*ite = this->_arr + this->_current_level + 1;
 
-	if (this->getCurrentLevel() <= 0)
-		throw std::runtime_error("Table is empty or contains only one element");
-	min = this->_arr[0];
-	max = this->_arr[0];
-	for (int i = 0; i < this->_current_level + 1; ++i)
-	{
-		if (this->_arr[i] < min)
-			min = this->_arr[i];
-		if (this->_arr[i] > max)
-			max = this->_arr[i];
-	}
-	return (max - min);
+	if (this->getCurrentLevel() < 0)
+		throw Span::EmptySizeException();
+	if (this->getCurrentLevel() == 0)
+		throw Span::OneElementException();
+	return (*std::max_element(it, ite) - *std::min_element(it, ite));
+}
+
+/*
+** Exceptions
+*/
+
+const char	*Span::FullSpanException::what() const throw()
+{
+	return ("❌ The span is full");
+}
+
+const char	*Span::OneElementException::what() const throw()
+{
+	return ("❌ There is only one element in the span");
+}
+
+const char	*Span::EmptySizeException::what() const throw()
+{
+	return ("❌ The span size is null");
+}
+
+const char	*Span::OutOfRangeException::what() const throw()
+{
+	return ("❌ The index is out of range");
 }

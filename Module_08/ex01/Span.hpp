@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:00:14 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/26 14:30:39 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/27 10:12:08 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,31 @@ class Span
 		void	addNumber(std::vector<int>::iterator it, std::vector<int>::iterator ite);
 		int		shortestSpan(void) const;
 		int		longestSpan(void) const;
+
+		// Exceptions
+		class FullSpanException : public std::exception
+		{
+			public:
+				virtual const char	*what() const throw();
+		};
+
+		class OneElementException : public std::exception
+		{
+			public:
+				virtual const char	*what() const throw();
+		};
+		
+		class EmptySizeException : public std::exception
+		{
+			public:
+				virtual const char	*what() const throw();
+		};
+		
+		class OutOfRangeException : public std::exception
+		{
+			public:
+				virtual const char	*what() const throw();
+		};
 
 	private:
 		Span(void);
