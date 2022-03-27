@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:00:14 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/27 11:52:47 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/27 23:21:19 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,29 +28,13 @@ class MutantStack : public std::stack<T>
 		MutantStack	&operator=(const MutantStack &rhs);
 
 		// Iterators
-		class iterator : public std::iterator<std::input_iterator_tag, T>
-		{
-			public:
-				// constructors
-  				iterator(T *x) : p(x) {}
-  				iterator(const iterator &it) : p(it.p) {}
-
-				// operators overload  
-  				iterator	&operator++(void) {++this->p;return *this;}
-  				iterator 	operator++(int) {iterator tmp(*this); operator++(); return tmp;}
-  				iterator	&operator--(void) {--this->p;return *this;}
-  				iterator 	operator--(int) {iterator tmp(*this); operator--(); return tmp;}
-  				bool 		operator==(const iterator& rhs) const {return this->p == rhs.p;}
-  				bool 		operator!=(const iterator& rhs) const {return this->p != rhs.p;}
-  				T			&operator*(void) {return *(this->p);}
-				
-				// attributes
-				T	*p;
-		};
-
-		// Member functions
-		MutantStack<T>::iterator	end(void) {return (&this->top() + 1);};
-		MutantStack<T>::iterator	begin(void) {return ((&this->top() + 1) - this->size());};
+		typedef typename std::stack<T>::container_type::iterator		iterator;
+		typedef typename std::stack<T>::container_type::const_iterator	const_iterator;
+		
+		iterator	begin(void) {return (this->c.begin());};
+		iterator	end(void) {return (this->c.end());};
+		const_iterator	begin(void) const {return (this->c.begin());};
+		const_iterator	end(void) const {return (this->c.end());};
 };
 
 # include "MutantStack.tpp"
