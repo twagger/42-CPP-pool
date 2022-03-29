@@ -6,7 +6,7 @@
 /*   By: twagner <twagner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:53:26 by twagner           #+#    #+#             */
-/*   Updated: 2022/03/27 23:02:31 by twagner          ###   ########.fr       */
+/*   Updated: 2022/03/29 09:38:16 by twagner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,14 @@ int main(void)
 	std::cout << std::endl;
 	std::cout << "\033[1;35m ---[ 1. Vector OK : find 8 ]--- \033[0m" << std::endl;
 	std::vector<int>					vect(42,0);
+	std::vector<int>::iterator			it;
 	std::generate_n(vect.begin(), 42, UniqueNumber);
 	try
 	{
 		easyfind(vect, 8);
+		// test with an iterator return
+		// it = easyfind2(vect, 8);
+		// std::cout << "value : " << *it << std::endl;
 	}
 	catch (std::exception &e)
 	{
