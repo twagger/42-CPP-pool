@@ -29,7 +29,7 @@ endif
 
 # RULES
 ################################################################################
-.c.o:
+.cpp.o:
 			$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o) -I$(HEADERS)
 
 $(NAME):	$(OBJS)
@@ -45,4 +45,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean c.o re
+.PHONY:		all clean fclean cpp.o re
